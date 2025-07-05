@@ -19,7 +19,15 @@ const productMap = {
     "срезающий насос": "neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "сушильная машина": "neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "центрифуга": "neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
-    "центробежный шламовый насос": "neftyanoye-oborudovanie/neftyanoye-oborudovanie.html"
+    "центробежный шламовый насос": "neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
+    "немецкий тип оси": "trailerAxle/bridgeTrailerPage.html.html",
+    "американский тип оси": "trailerAxle/bridgeTrailerPage.html.html",
+    " ": "trailerAxle/bridgeTrailerPage.html.html",
+    "низкоплатформенный автомобильный мост": "trailerAxle/bridgeTrailerPage.html",
+    "ось дискового тормоза": "trailerAxle/bridgeTrailerPage.html",
+    "тайская ось": "trailerAxle/bridgeTrailerPage.html",
+    "немецкий тип оси": "trailerAxle/bridgeTrailerPage.html",
+    "американский тип оси": "trailerAxle/bridgeTrailerPage.html",
   };
 
   // Расстояние Левенштейна
