@@ -28,6 +28,7 @@ body {
 }
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -882,8 +883,9 @@ section.product {
 }
 
 main section img {
-  width: 230px;
-  height: 230px;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
 }
 
 .flex-wrape {
@@ -979,12 +981,11 @@ main ol nav li {
 }
 
 table {
-  text-align: center;
-  border: 1px solid #dddddd;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  margin-top: 50px;
-  width: 800px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  display: block;
 }
 
 td {
@@ -1335,6 +1336,7 @@ ul.menu {
     align-items: flex-start;
   }
   .contacts {
+
     align-items: flex-start;
     min-width: 0;
   }
