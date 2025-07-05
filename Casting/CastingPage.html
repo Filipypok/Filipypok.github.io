@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Литьё на заказ</title>
+  <meta name ="description" content="Литье на заказ от ООО «Оубадаму Ланфан» - импорт и экспорт автозапчастей. Узнайте больше о нашем оборудовании и услугах."/>
+  <title>Литьё на заказ | ООО «Оубадаму Ланфан» - импорт и экспорт автозапчастей</title>
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -178,7 +179,7 @@
                 <img src="/img/Category5/Obrabotka_tormoznogo_disca.jpg" alt="Изображение тормозного барабана" title="Обработка тормозного барабана">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Обработка тормозного барабана">
               <a href="/Casting/obrabotka-tormoznogo-barabana.html">Обработка тормозного барабана</a>
             </div>
           </section>
@@ -188,7 +189,7 @@
                 <img src="/img/Category5/obrabotka-stupitsy-kolesa.jpg" alt="Изображение ступицы колеса" title="Обработка ступицы колеса">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Обработка ступицы колеса">
               <a href="/Casting/obrabotka-stupitsy-kolesa.html">Обработка ступицы колеса</a>
             </div>
           </section>
@@ -198,7 +199,7 @@
                 <img src="/img/Category5/lite-detalei-spetsialnoi-formy-1.jpg" alt="Деталь специальной формы" title="Литьё деталей специальной формы №1">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё деталей специальной формы">
               <a href="/Casting/lite-detalei-spetsialnoi-formy-1.html">Литьё деталей специальной формы №1</a>
             </div>
           </section>
@@ -208,7 +209,7 @@
                 <img src="/img/Category5/lite-detalei-spetsialnoi-formy-2.jpg" alt="Деталь специальной формы" title="Литьё деталей специальной формы №2">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё деталей специальной формы">
               <a href="/Casting/lite-detalei-spetsialnoi-formy-2.html">Литьё деталей специальной формы №2</a>
             </div>
           </section>
@@ -218,7 +219,7 @@
                 <img src="/img/Category5/protsess-poteri-peny.jpg" alt="Изображение пены" title="Процесс потери пены">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Процесс потери пены">
               <a href="/Casting/protsess-poteri-peny.html">Процесс потери пены</a>
             </div>
           </section>
@@ -228,7 +229,7 @@
                 <img src="/img/Category5/lite-pod-davleniem-poteryannoi-peny.jpg" alt="Литьё под давлением" title="Литьё под давлением специальной формы">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё под давлением специальной формы">
               <a href="/Casting/lite-pod-davleniem-poteryannoi-peny.html">Литьё под давлением специальной формы</a>
             </div>
           </section>
@@ -238,7 +239,7 @@
                 <img src="/img/Category5/lite-iz-peska-s-pokrytiem-1.jpg" alt="Литьё из песка" title="Литьё из песка с покрытием">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё из песка с покрытием">
               <a href="/Casting/lite-iz-peska-s-pokrytiem-1.html">Литьё из песка с покрытием №1</a>
             </div>
           </section>
@@ -248,7 +249,7 @@
                 <img src="/img/Category5/lite-iz-peska-s-pokrytiem-2.png" alt="Литьё из песка" title="Литьё из песка с покрытием">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё из песка с покрытием">
               <a href="/Casting/lite-iz-peska-s-pokrytiem-2.html">Литьё из песка с покрытием №2</a>
             </div>
           </section>
@@ -258,7 +259,7 @@
                 <img src="/img/Category5/lite-iz-peska-s-pokrytiem-3.jpg" alt="Литьё из песка" title="Литьё из песка с покрытием">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Литьё из песка с покрытием">
               <a href="/Casting/lite-iz-peska-s-pokrytiem-3.html">Литьё из песка с покрытием №3</a>
             </div>
           </section>
@@ -289,7 +290,40 @@
         <p >Copyright @ 2009-2025, Все права защищены</p>
         <p>ООО «Оубадаму Ланфан» по импорту и экспорту. Авторское право строго
           запрещено копировать предложение использовать 1024x768 разрешение для просмотра файла</p>
-      </footer> 
+      </footer>
+            <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchTerm = params.get("search");
+
+    if (searchTerm) {
+      const productSections = document.querySelectorAll(".product");
+      let matched = false;
+
+      productSections.forEach(section => {
+        const prod = section.querySelector(".prod");
+        const name = prod?.getAttribute("data-name")?.toLowerCase() || "";
+
+        if (name.includes(searchTerm.toLowerCase())) {
+          matched = true;
+
+          // Подсветка
+          section.style.backgroundColor = "yellow";
+          section.style.transition = "background-color 0.3s ease";
+
+          // Прокрутка до карточки
+          const yOffset = -100;
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+
+      if (!matched) {
+        console.warn("Товар не найден на странице:", searchTerm);
+      }
+    }
+  });
+</script>
 <script src="/js/search.js"></script>
 </body>
 </html>

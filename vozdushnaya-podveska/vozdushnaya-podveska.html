@@ -153,8 +153,8 @@
           <aside class="sidebar">
             <nav>
               <ul class="menu">
-            <li><a href="/trailerAxle/bridgeTrailerPage.html" id="first">Сборка переднего и заднего моста прицепа</a></li>
-            <li><a href="/vozdushnaya-podveska/vozdushnaya-podveska.html">Воздушная подвеска</a></li>
+            <li><a href="/trailerAxle/bridgeTrailerPage.html" >Сборка переднего и заднего моста прицепа</a></li>
+            <li><a href="/vozdushnaya-podveska/vozdushnaya-podveska.html" id="first">Воздушная подвеска</a></li>
             <li class=" has-submenu">
               <a href="/zapchasti-dlya-mosta-gruzovyh-avtomobiley/zapchasti-dlya-mosta-gruzovyh-avtomobiley.html" class="menu-button">Запчасти для моста грузовых автомобилей </a>
               <ul class="submenu">
@@ -188,7 +188,7 @@
                 <img src="/img/vozdushnaya-podveska/zhestkaya-podveska.jpg" alt="Изображения жесткого типа подвески" title="Жесткая подвеска">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Жесткая подвеска">
               <a href="/vozdushnaya-podveska/zhestkaya-podveska.html">Жесткая подвеска</a>
             </div>
           </section>
@@ -198,7 +198,7 @@
                 <img src="/img/vozdushnaya-podveska/ustanovlennyy-svetilnik.jpg" alt="Изображения установленного светильника" title="Установленный светильник">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Установленный светильник">
               <a href="/vozdushnaya-podveska/ustanovlennyy-svetilnik.html">Установленный светильник</a>
             </div>
           </section>
@@ -208,7 +208,7 @@
                 <img src="/img/vozdushnaya-podveska/edinaya-tochka-podveski.jpg" alt="Изображения единой точки подвески" title="Единая точка подвески">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Единая точка подвески">
               <a href="/vozdushnaya-podveska/edinaya-tochka-podveski.html">Единая точка подвески</a>
             </div>
           </section>
@@ -218,7 +218,7 @@
                 <img src="/img/vozdushnaya-podveska/amerikanskaya-podveska.jpg" alt="Изображения американской подвески" title="Американская подвеска">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Американская подвеска">
               <a href="/vozdushnaya-podveska/amerikanskaya-podveska.html">Американская подвеска</a>
             </div>
           </section>
@@ -228,7 +228,7 @@
                 <img src="/img/vozdushnaya-podveska/amerikanskaya-podveska-2.jpg" alt="Изображения американской подвески 2" title="Американская подвеска №2">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Американская подвеска">
               <a href="/vozdushnaya-podveska/amerikanskaya-podveska-2.html">Американская подвеска №2</a>
             </div>
           </section>
@@ -238,7 +238,7 @@
                 <img src="/img/vozdushnaya-podveska/podveska-nemetskogo-tipa.jpg" alt="Изображения немецкой подвески" title="Немецкая подвеска">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Немецкая подвеска">
               <a href="/vozdushnaya-podveska/podveska-nemetskogo-tipa.html">Немецкая подвеска</a>
             </div>
           </section>
@@ -248,7 +248,7 @@
                 <img src="/img/vozdushnaya-podveska/podveska-nemetskogo-tipa-2.jpg" alt="Изображения немецкой подвески 2" title="Немецкая подвеска №2">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Немецкая подвеска ">
               <a href="/vozdushnaya-podveska/podveska-nemetskogo-tipa-2.html">Немецкая подвеска №2</a>
             </div>
           </section>
@@ -281,6 +281,39 @@
         <p>ООО «Оубадаму Ланфан» по импорту и экспорту. Авторское право строго
           запрещено копировать предложение использовать 1024x768 разрешение для просмотра файла</p>
       </footer>
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchTerm = params.get("search");
+
+    if (searchTerm) {
+      const productSections = document.querySelectorAll(".product");
+      let matched = false;
+
+      productSections.forEach(section => {
+        const prod = section.querySelector(".prod");
+        const name = prod?.getAttribute("data-name")?.toLowerCase() || "";
+
+        if (name.includes(searchTerm.toLowerCase())) {
+          matched = true;
+
+          // Подсветка
+          section.style.backgroundColor = "yellow";
+          section.style.transition = "background-color 0.3s ease";
+
+          // Прокрутка до карточки
+          const yOffset = -100;
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+
+      if (!matched) {
+        console.warn("Товар не найден на странице:", searchTerm);
+      }
+    }
+  });
+</script>
       <script src="/js/search.js"></script>
 </body>
 </html>

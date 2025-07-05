@@ -188,7 +188,7 @@
                 <img src="/img/rezinovye-izdeliya/avtomaticheskaya-mashina-dlya-litya.jpg" alt="Изображения автоматической машины для литья" title="Автоматическая машина для литья">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Автоматическая машина для литья">
               <a href="/rezinovye-izdeliya/avtomaticheskaya-mashina-dlya-litya.html">Автоматическая машина для литья</a>
             </div>
           </section>
@@ -198,7 +198,7 @@
                 <img src="/img/rezinovye-izdeliya/rezinovyy-ekstruder.jpg" alt="Изображения резинового экструдера" title="Резиновый экструдер">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Резиновый экструдер">
               <a href="/rezinovye-izdeliya/rezinovyy-ekstruder.html">Резиновый экструдер</a>
             </div>
           </section>
@@ -208,7 +208,7 @@
                 <img src="/img/rezinovye-izdeliya/rezinovyy-kalandr.jpg" alt="Изображения резинового каландра" title="Резиновый каландр">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Резиновый каландр">
               <a href="/rezinovye-izdeliya/rezinovyy-kalandr.html">Резиновый каландр</a>
             </div>
           </section>
@@ -218,7 +218,7 @@
                 <img src="/img/rezinovye-izdeliya/rezinovaya-ploskaya-vulkanizatsionnaya-mashina.jpg" alt="Изображения резиновой плоской вулканизационной машины" title="Резиновая плоская вулканизационная машина">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Резиновая плоская вулканизационная машина">
               <a href="/rezinovye-izdeliya/rezinovaya-ploskaya-vulkanizatsionnaya-mashina.html">Резиновая плоская вулканизационная машина</a>
             </div>
           </section>
@@ -228,7 +228,7 @@
                 <img src="/img/rezinovye-izdeliya/smesitel.jpg" alt="Изображения смесителя" title="Смеситель">
               </a>
             </div>
-            <div class="prod">
+            <div class="prod" data-name="Смеситель">
               <a href="/rezinovye-izdeliya/smesitel.html">Смеситель</a>
             </div>
           </section>
@@ -259,7 +259,40 @@
         <p >Copyright @ 2009-2025, Все права защищены</p>
         <p>ООО «Оубадаму Ланфан» по импорту и экспорту. Авторское право строго
           запрещено копировать предложение использовать 1024x768 разрешение для просмотра файла</p>
-      </footer> 
+      </footer>
+                  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchTerm = params.get("search");
+
+    if (searchTerm) {
+      const productSections = document.querySelectorAll(".product");
+      let matched = false;
+
+      productSections.forEach(section => {
+        const prod = section.querySelector(".prod");
+        const name = prod?.getAttribute("data-name")?.toLowerCase() || "";
+
+        if (name.includes(searchTerm.toLowerCase())) {
+          matched = true;
+
+          // Подсветка
+          section.style.backgroundColor = "yellow";
+          section.style.transition = "background-color 0.3s ease";
+
+          // Прокрутка до карточки
+          const yOffset = -100;
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+
+      if (!matched) {
+        console.warn("Товар не найден на странице:", searchTerm);
+      }
+    }
+  });
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/search.js"></script>
 </body>
