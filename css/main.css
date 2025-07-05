@@ -153,7 +153,7 @@ body {
 }
 
 /* --- Мобильная адаптация --- */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .container, .container-menu-bar {
     padding: 0 6px;
     max-width: 100vw;
@@ -200,10 +200,10 @@ body {
   footer .blockcont ul {
     width: 100%;
   }
-}
+} */
 
 /* --- Мобильное меню --- */
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .burger {
     display: flex;
   }
@@ -315,7 +315,7 @@ body {
   footer .blockcont ul {
     width: 100%;
   }
-}
+} */
 .menu-item {
   text-decoration: none;
   text-transform: uppercase;
@@ -606,7 +606,7 @@ span a:hover {
     margin-top: 15px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .about-section {
         flex-direction: column;
         gap: 20px;
@@ -620,7 +620,7 @@ span a:hover {
         width: 100%;
         margin-top: 20px;
     }
-}
+} */
 
 .underslider {
   border-bottom: 1px solid #0c5791;
@@ -1234,13 +1234,13 @@ ul.menu {
       max-height: 1000px; /* просто большое значение */
     }
 
-    @media (max-width: 600px) {
+    /* @media (max-width: 600px) {
       .menu > li > a,
       .submenu li a {
         padding: 12px;
         font-size: 16px;
       }
-    }
+    } */
 
     .menu > li > a::after {
 
@@ -1323,7 +1323,7 @@ ul.menu {
 }
 
 /* Для мобильных */
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .top-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -1338,7 +1338,7 @@ ul.menu {
     align-items: flex-start;
     min-width: 0;
   }
-}
+} */
 .underslider-most {
     font-size: 24px;
     font-weight: bold;
@@ -1367,7 +1367,7 @@ main .padd-most img {
 }
 
 /* --- Адаптация для мобильных устройств --- */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .container {
     padding: 0 8px;
     max-width: 100%;
@@ -1415,9 +1415,9 @@ main .padd-most img {
   footer .blockcont ul {
     width: 100%;
   }
-}
+} */
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .container {
     padding: 0 4px;
   }
@@ -1510,7 +1510,7 @@ main .padd-most img {
   footer .blockcont ul {
     width: 100%;
   }
-}
+} */
 
 /* --- Конец адаптации --- */
 
@@ -1600,7 +1600,7 @@ input, textarea {
 input:focus, textarea:focus {
   border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
 }
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .mainform {
     flex-direction: column;
     gap: 16px;
@@ -1624,7 +1624,7 @@ input:focus, textarea:focus {
     height: 120px;
     max-width: 100%;
   }
-}
+} */
 button {
   cursor: pointer;
   font-size: 1.2rem;
