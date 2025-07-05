@@ -1658,6 +1658,31 @@ input:focus, textarea:focus {
     box-sizing: border-box;
   }
 }
+@media (max-width: 700px) {
+  .product img,
+  main section img,
+  .slide img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  .product {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0 16px 0;
+  }
+  .image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 button {
   cursor: pointer;
   font-size: 1.2rem;
