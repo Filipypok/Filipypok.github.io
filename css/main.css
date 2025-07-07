@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
 
 body {
   font-family:  'Ubuntu', sans-serif;
@@ -27,7 +28,6 @@ body {
 }
 .container {
   max-width: 1200px;
-  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -131,7 +131,6 @@ body {
 } 
 /* --- Бургер-меню --- */
 .burger {
-  display: none;
   flex-direction: column;
   justify-content: center;
   width: 40px;
@@ -142,18 +141,9 @@ body {
   z-index: 1001;
   margin-right: 10px;
 }
-.burger span {
-  display: block;
-  height: 4px;
-  width: 28px;
-  background: #0c5791;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
 /* --- Мобильная адаптация --- */
- @media (max-width: 900px) {
+/* @media (max-width: 900px) { */
+/* @media (max-width: 900px) {
   .container, .container-menu-bar {
     padding: 0 6px;
     max-width: 100vw;
@@ -200,122 +190,11 @@ body {
   footer .blockcont ul {
     width: 100%;
   }
-} 
+}
+} */
 
 /* --- Мобильное меню --- */
-@media (max-width: 700px) {
-  .burger {
-    display: flex;
-  }
-  .container-menu-bar .nav {
-    position: fixed;
-    top: 0;
-    right: -100vw;
-    width: 80vw;
-    height: 100vh;
-    background: #fff;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding: 60px 20px 20px 20px;
-    box-shadow: -2px 0 12px rgba(44,114,157,0.07);
-    z-index: 1000;
-    transition: right 0.3s;
-  }
-  .container-menu-bar .nav.open {
-    right: 0;
-  }
-  .menu-item, .dropdown, .search-bar {
-    width: 100%;
-    margin: 0 0 12px 0;
-  }
-  .dropdown-menu, .dropdown-submenu {
-    position: static;
-    min-width: 100%;
-    box-shadow: none;
-    border-radius: 0;
-    background: #f7f9fb;
-    color: #0c5791;
-  }
-  .dropdown-menu > li > a, .dropdown-submenu li a {
-    color: #0c5791;
-    background: none;
-    padding: 12px 0;
-    font-weight: 500;
-  }
-  .dropdown-menu > li:hover > a,
-  .dropdown-menu > li > a:focus {
-    background: #eaf3fa;
-    color: #174d99;
-  }
-  .dropdown-submenu li a:hover {
-    background: #eaf3fa;
-    color: #174d99;
-  }
-  .slider {
-    max-width: 100vw;
-  }
-  .slide img {
-    max-width: 100vw;
-    max-height: 120px;
-  }
-  .product {
-    max-width: 100%;
-    margin: 0 0 16px 0;
-    padding: 10px 5px 16px 5px;
-  }
-  .product img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  main section img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  .flex-wrape {
-    flex-direction: column;
-    gap: 0;
-  }
-  aside.sidebar {
-    max-width: 100%;
-    margin-bottom: 16px;
-  }
-  aside ul li, aside nav ul li {
-    width: 100%;
-    font-size: 16px;
-    padding-top: 10px;
-  }
-  .underslider, .underslider-most {
-    width: 100%;
-    font-size: 18px;
-    padding-top: 8px;
-  }
-  .page {
-    flex-direction: column;
-    gap: 12px;
-    padding-left: 0;
-    max-width: 100%;
-  }
-  .back-page, .next-page {
-    padding: 12px 8px;
-    font-size: 15px;
-  }
-  footer {
-    font-size: 15px;
-    padding: 20px 4px;
-  }
-  .blockcont {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  footer .blockcont p,
-  footer .blockcont ul {
-    width: 100%;
-  }
-} 
+
 .menu-item {
   text-decoration: none;
   text-transform: uppercase;
@@ -397,7 +276,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   z-index: 2;
-  
+
 }
 
 
@@ -431,7 +310,7 @@ input:checked + label {
     padding: 30px;
 
     font-size: 25px;    text-align: center;
-    
+
 }
 
 .company {
@@ -568,14 +447,14 @@ span a:hover {
 .product-slider {
     width: 935px; /* Фиксированная ширина как на скриншоте */
     flex-shrink: 0; /* Запрещаем уменьшение */
-    
+
 }
 
 .product-slider .slider {
     width: 100%;
     margin: 0;
     border-radius: 4px;
-    
+
 }
 
 .product-slider .slide img {
@@ -606,7 +485,8 @@ span a:hover {
     margin-top: 15px;
 }
 
- @media (max-width: 768px) {
+/* @media (max-width: 768px) { */
+/* @media (max-width: 768px) {
     .about-section {
         flex-direction: column;
         gap: 20px;
@@ -620,7 +500,8 @@ span a:hover {
         width: 100%;
         margin-top: 20px;
     }
-} 
+}
+} */
 
 .underslider {
   border-bottom: 1px solid #0c5791;
@@ -882,9 +763,8 @@ section.product {
 }
 
 main section img {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
+  width: 230px;
+  height: 230px;
 }
 
 .flex-wrape {
@@ -980,11 +860,12 @@ main ol nav li {
 }
 
 table {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow-x: auto;
-  display: block;
+  text-align: center;
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  width: 800px;
 }
 
 td {
@@ -1234,13 +1115,15 @@ ul.menu {
       max-height: 1000px; /* просто большое значение */
     }
 
-    @media (max-width: 600px) {
+    /* @media (max-width: 600px) { */
+    /* @media (max-width: 600px) {
       .menu > li > a,
       .submenu li a {
         padding: 12px;
         font-size: 16px;
       }
     }
+    } */
 
     .menu > li > a::after {
 
@@ -1323,7 +1206,8 @@ ul.menu {
 }
 
 /* Для мобильных */
-@media (max-width: 700px) {
+/* @media (max-width: 700px) { */
+/* @media (max-width: 700px) {
   .top-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -1335,11 +1219,11 @@ ul.menu {
     align-items: flex-start;
   }
   .contacts {
-
     align-items: flex-start;
     min-width: 0;
   }
 }
+} */
 .underslider-most {
     font-size: 24px;
     font-weight: bold;
@@ -1367,153 +1251,6 @@ main .padd-most img {
   font-weight: 500;
 }
 
-/* --- Адаптация для мобильных устройств --- */
-@media (max-width: 900px) {
-  .container {
-    padding: 0 8px;
-    max-width: 100%;
-  }
-  .container-menu-bar .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 2px 0;
-  }
-  .menu-item {
-    font-size: 15px;
-    margin: 0 20px 0 0;
-    padding: 2px 0;
-  }
-  .slider {
-    max-width: 100vw;
-  }
-  .slide img {
-    height: auto;
-    max-height: 200px;
-    object-fit: contain;
-  }
-  .row {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  .about-section {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .product-slider {
-    width: 100%;
-    min-width: 0;
-  }
-  .about-content {
-    max-width: 100%;
-  }
-  .blockcont {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  footer .blockcont p,
-  footer .blockcont ul {
-    width: 100%;
-  }
-}
-
-@media (max-width: 700px) {
-  .container {
-    padding: 0 4px;
-  }
-  .container-menu-bar .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding-bottom: -20px;
-  }
-  .menu-item {
-    font-size: 14px;
-    margin: 0 0 6px 0;
-  }
-  .slider {
-    max-width: 100vw;
-  }
-  .slide img {
-    max-width: 100vw;
-    max-height: 140px;
-  }
-  .row {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .about-section {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .product-slider {
-    width: 100%;
-    min-width: 0;
-  }
-  .about-content {
-    max-width: 100%;
-  }
-  .product {
-    max-width: 100%;
-    margin: 0 0 20px 0;
-    padding: 10px 5px 16px 5px;
-  }
-  .product img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  main section img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  .flex-wrape {
-    flex-direction: column;
-    gap: 0;
-  }
-  aside.sidebar {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-  aside ul li, aside nav ul li {
-    width: 100%;
-    font-size: 16px;
-    padding-top: 10px;
-  }
-  .underslider, .underslider-most {
-    width: 100%;
-    font-size: 18px;
-    padding-top: 8px;
-  }
-  .page {
-    flex-direction: column;
-    gap: 12px;
-    padding-left: 0;
-    max-width: 100%;
-  }
-  .back-page, .next-page {
-    padding: 12px 8px;
-    font-size: 15px;
-  }
-  footer {
-    font-size: 15px;
-    padding: 20px 4px;
-  }
-  .blockcont {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  footer .blockcont p,
-  footer .blockcont ul {
-    width: 100%;
-  }
-}
-
-/* --- Конец адаптации --- */
 
 .wrap {
   background-color: #fbfbfbcc;
@@ -1526,26 +1263,23 @@ main .padd-most img {
 form div {
     margin-top: 1rem;
 }
- 
-label, input, textarea, button, select{
-    font-size: 1.3rem;
-    line-height: 1.2
-}
- 
+
+
+
 form {
   padding-top: 20px;
     width: 30em;
     max-width: 90%;
-   
+
 }
- 
+
 label {
     margin-top:20px;
     display: block;
     margin-bottom: 5px;
     font-weight: 400;
 }
- 
+
 input, textarea {
     padding: 0.4rem;
     width: 100%;
@@ -1554,7 +1288,7 @@ form div textarea {
   width: 1000px;
   height: 800px;
 }
- 
+
 button {
     margin-top: 2rem;
     background: #0c5791;
@@ -1591,98 +1325,337 @@ textarea {
   font-size: 20px;
   pointer-events: none;
 }
+input:focus, textarea:focus {
+  border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
+}
+
+.buton {
+  padding-bottom: 50px;
+}
+/*Стилистика мобильной адаптации*/
+
+/* --- Конец адаптации --- */
+
+.wrap {
+  background-color: #fbfbfbcc;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%);}
+  to { transform: translateY(0);}
+}
+form div {
+    margin-top: 1rem;
+}
+
+
+
+form {
+  padding-top: 20px;
+    width: 30em;
+    max-width: 90%;
+
+}
+
+label {
+    margin-top:20px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
 input, textarea {
-  border: 1.5px solid rgba(44, 114, 157, 0.25); /* полупрозрачный синий */
-  border-radius: 8px;
-  transition: border-color 0.2s;
-  background: #fff;
-  outline: none;
+    padding: 0.4rem;
+    width: 100%;
+}
+form div textarea {
+  width: 1000px;
+  height: 800px;
+}
+
+button {
+    margin-top: 2rem;
+    background: #0c5791;
+    color: #fff;
+    border: none; 
+    padding: 0.6rem;
+}
+
+.mainform {
+  justify-content: space-between;
+  display: flex;
+  flex:1;
+}
+textarea {
+  height: 390px;
+  width: 350px;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.input-icon input {
+  width: 100%;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
 }
 input:focus, textarea:focus {
   border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
 }
- @media (max-width: 700px) {
-  .mainform {
-    flex-direction: column;
-    gap: 16px;
-  }
-  #write, #area {
-    width: 100%;
-    min-width: 0;
-  }
-  input, textarea {
-    font-size: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-    min-width: 0;
-  }
-  form {
-    width: 100%;
-    padding: 0 100%;
-  }
-  textarea {
-    min-height: 120px;
-    height: 120px;
-    max-width: 100%;
-  }
+
+.buton {
+  padding-bottom: 50px;
 }
-@media (max-width: 700px) {
-  .container, .container-menu-bar {
-    padding: 0 4px;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-  table {
-    width: 100vw !important;
-    min-width: 600px;
+.wrap {
+  background-color: #fbfbfbcc;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%);}
+  to { transform: translateY(0);}
+}
+form div {
+    margin-top: 1rem;
+}
+
+
+
+form {
+  padding-top: 20px;
+    width: 30em;
+    max-width: 90%;
+
+}
+
+label {
+    margin-top:20px;
     display: block;
-    overflow-x: auto;
-  }
+    margin-bottom: 5px;
+    font-weight: 400;
 }
-@media (max-width: 700px) {
-  .prev {
-    left: 0 !important;
-  }
-  .next {
-    right: 0 !important;
-  }
-} 
-@media (max-width: 700px){
-  .product img, main section img {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  .product {
-    min-width: 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
+
+form div textarea {
+  width: 1000px;
+  height: 800px;
 }
- @media (max-width: 700px) {
-  .product img,
-  main section img,
-  .slide img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
+
+button {
+    margin-top: 2rem;
+    background: #0c5791;
+    color: #fff;
+    border: none; 
+    padding: 0.6rem;
+}
+
+.mainform {
+  justify-content: space-between;
+  display: flex;
+  flex:1;
+}
+textarea {
+  height: 390px;
+  width: 350px;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.input-icon input {
+  width: 100%;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
+}
+input:focus, textarea:focus {
+  border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
+}
+
+.buton {
+  padding-bottom: 50px;
+}
+.wrap {
+  background-color: #fbfbfbcc;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%);}
+  to { transform: translateY(0);}
+}
+form div {
+    margin-top: 1rem;
+}
+
+
+
+form {
+  padding-top: 20px;
+    width: 30em;
+    max-width: 90%;
+
+}
+
+label {
+    margin-top:20px;
     display: block;
-    margin: 0 auto;
-  }
-  .product {
-    max-width: 100%;
-    min-width: 0;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+input, textarea {
+    padding: 0.4rem;
     width: 100%;
-    box-sizing: border-box;
-    padding: 10px 0 16px 0;
-  }
-  .image {
+}
+form div textarea {
+  width: 1000px;
+  height: 800px;
+}
+
+button {
+    margin-top: 2rem;
+    background: #0c5791;
+    color: #fff;
+    border: none; 
+    padding: 0.6rem;
+}
+
+.mainform {
+  justify-content: space-between;
+  display: flex;
+  flex:1;
+}
+textarea {
+  height: 390px;
+  width: 350px;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.input-icon input {
+  width: 100%;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
+}
+input:focus, textarea:focus {
+  border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
+}
+
+.buton {
+  padding-bottom: 50px;
+}
+
+/*Стилистика мобильной адаптации*/
+
+
+/* --- Конец адаптации --- */
+
+.wrap {
+  background-color: #fbfbfbcc;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%);}
+  to { transform: translateY(0);}
+}
+form div {
+    margin-top: 1rem;
+}
+
+label, input, textarea, button, select{
+    font-size: 1.3rem;
+    line-height: 1.2
+}
+
+form {
+  padding-top: 20px;
+    width: 30em;
+    max-width: 90%;
+
+}
+
+label {
+    margin-top:20px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+input, textarea {
+    padding: 0.4rem;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
+form div textarea {
+  width: 1000px;
+  height: 800px;
+}
+
+button {
+    margin-top: 2rem;
+    background: #0c5791;
+    color: #fff;
+    border: none; 
+    padding: 0.6rem;
+}
+
+.mainform {
+  justify-content: space-between;
+  display: flex;
+  flex:1;
+}
+textarea {
+  height: 390px;
+  width: 350px;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.input-icon input {
+  width: 100%;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
+}
+input:focus, textarea:focus {
+  border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
 }
 button {
   cursor: pointer;
@@ -1695,3 +1668,399 @@ button {
   padding-bottom: 50px;
 }
 
+.wrap {
+  background-color: #fbfbfbcc;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%);}
+  to { transform: translateY(0);}
+}
+form div {
+    margin-top: 1rem;
+}
+
+
+
+form {
+  padding-top: 20px;
+    width: 30em;
+    max-width: 90%;
+
+}
+
+label {
+    margin-top:20px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+input, textarea {
+    padding: 0.4rem;
+    width: 100%;
+}
+form div textarea {
+  width: 1000px;
+  height: 800px;
+}
+
+button {
+    margin-top: 2rem;
+    background: #0c5791;
+    color: #fff;
+    border: none; 
+    padding: 0.6rem;
+}
+
+.mainform {
+  justify-content: space-between;
+  display: flex;
+  flex:1;
+}
+textarea {
+  height: 390px;
+  width: 350px;
+}
+.input-icon {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.input-icon input {
+  width: 100%;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
+}
+input:focus, textarea:focus {
+  border-color: rgba(10, 75, 116, 0.6); /* чуть ярче при фокусе */
+}
+
+.buton {
+  padding-bottom: 50px;
+}
+
+/* .burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 12px;
+  z-index: 1101;
+} */
+  /* @media (max-width: 850px) {
+  .prev, .next
+  {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    padding: 8px;
+    font-size: 15px;
+  }
+  .header-info {
+    display: none;
+  }
+  .contacts {
+    display: none;
+  }
+  .container-menu-bar .nav {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 80vw;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 60px 20px 20px 20px;
+    box-shadow: -2px 0 12px rgba(44,114,157,0.07);
+    z-index: 1000;
+    transition: right 0.3s;
+  }
+  .container-menu-bar .nav.open {
+    right: 0;
+  }
+  .menu-item, .dropdown, .search-bar {
+    width: 100%;
+    margin: 0 0 12px 0;
+  }
+  .dropdown-menu, .dropdown-submenu {
+    position: static;
+    min-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    background: #f7f9fb;
+    color: #0c5791;
+  }
+  .dropdown-menu > li > a, .dropdown-submenu li a {
+    color: #0c5791;
+    background: none;
+    padding: 12px 0;
+    font-weight: 500;
+  }
+  .dropdown-menu > li:hover > a,
+  .dropdown-menu > li > a:focus {
+    background: #eaf3fa;
+    color: #174d99;
+  }
+  .dropdown-submenu li a:hover {
+    background: #eaf3fa;
+    color: #174d99;
+  }
+  .slider {
+    max-width: 100vw;
+  }
+  .slide img {
+    max-width: 100vw;
+    max-height: 120px;
+  }
+  .product {
+    max-width: 100%;
+    margin: 0 0 16px 0;
+    padding: 10px 5px 16px 5px;
+  }
+  .product img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+  main section img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+  }
+  .flex-wrape {
+    flex-direction: column;
+    gap: 0;
+  }
+  aside.sidebar {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  aside ul li, aside nav ul li {
+    width: 100%;
+    font-size: 16px;
+    padding-top: 10px;
+  }
+  .underslider, .underslider-most {
+    width: 100%;
+    font-size: 18px;
+    padding-top: 8px;
+  }
+  .page {
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 0;
+    max-width: 100%;
+  }
+  .back-page, .next-page {
+    padding: 12px 8px;
+    font-size: 15px;
+  }
+  footer {
+    font-size: 15px;
+    padding: 20px 4px;
+  }
+  .blockcont {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  footer .blockcont p,
+  footer .blockcont ul {
+    width: 100%;
+  }
+}
+.burger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #0c5791;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Показываем бургер только на мобильных */
+ /* @media (max-width: 500px) {
+  .container-menu-bar .nav {
+    display: flex;
+  }
+  .top-bar {
+    justify-content: space-between;
+  }
+  .mobile-menu-popup {
+    background-color: white;
+    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.1);
+  }
+}  */
+/* @media (max-width: 800px) {
+
+  .mobile-menu-popup {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 80vw;
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .mobile-menu-popup.open {
+    right: 0;
+  }
+
+  .container-menu-bar .nav {
+    flex-direction: column;
+  }
+  mobile-menu-popup .nav {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px 20px;
+  }
+}  */
+
+/* Бургер */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+  z-index: 1100;
+}
+.burger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #0c5791;
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* Показываем бургер только на мобилке */
+@media (max-width: 800px) {
+  .burger {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0%);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .mobile-nav a {
+    font-size: 22px;
+    text-decoration: none;
+    color: #0c5791;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-nav a:hover {
+    color: #174d99;
+  }
+
+  .container-menu-bar,
+  .nav,
+  .header-info,
+  .contacts {
+    display: none;
+  }
+}
+/* Стили бургер-меню */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.burger {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1500; /* выше, чем у .header и других */
+}
+.burger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #0c5791; /* Синий — можно любой цвет */
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: 0.3s ease;
+  z-index: 2000; /* Поверх других */
+}
+/* Показываем бургер на мобилке */
+@media (max-width: 850px) {
+  .burger {
+    display: flex;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  /* Прячем десктоп-меню */
+  .container-menu-bar,
+  .header-info,
+  .contacts {
+    display: none;
+  }
+}
+.burger {
+  background: rgba(255, 0, 0, 0.1); /* Красный фон */
+}
+/* .burger span {
+  background: red !important;
+} */

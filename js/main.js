@@ -104,20 +104,3 @@ window.addEventListener('scroll', function() {
     header.classList.remove('fixed-header');
   }
 });
-document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.getElementById('burger-menu');
-  const nav = document.querySelector('.container-menu-bar .nav');
-  burger.addEventListener('click', function() {
-    nav.classList.toggle('open');
-    burger.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-  });
-  // Закрытие меню по клику вне меню
-  document.addEventListener('click', function(e) {
-    if (!nav.contains(e.target) && !burger.contains(e.target)) {
-      nav.classList.remove('open');
-      burger.classList.remove('open');
-      document.body.classList.remove('menu-open');
-    }
-  });
-});

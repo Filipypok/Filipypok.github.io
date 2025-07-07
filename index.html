@@ -6,6 +6,7 @@
   <title>ООО «Оубадаму Ланфан» - импорт и экспорт автозапчастей</title>
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
   
@@ -17,6 +18,11 @@
       <a href="/index.html">
         <img src="/img/logo.png" alt="Логотип компании" class="logo" />
       </a>
+      <button class="burger" id="burger-menu" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="header-info">
         <span id="OOO">ООО «Оубадаму Ланфан»</span>
         <span class="header-slogan">Импорт и экспорт автозапчастей и оборудования из Китая</span>
@@ -28,14 +34,19 @@
       </div>
     </div>
   </header>
+  <div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-nav">
+    <a href="/index.html">Главная</a>
+    <a href="/products.html">Каталог</a>
+    <a href="/about.html">О компании</a>
+    <a href="/writing.html">Запись</a>
+    <a href="/contacts.html">Контакты</a>
+  </nav>
 </div>
-    <div class="container">
+</div>
+ <div class="container">
     <div class="container-menu-bar">
-    <button class="burger" id="burger-menu" aria-label="Открыть меню">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+       <div class="mobile-menu-popup" id="mobileMenuPopup">
       <nav class="nav">
         <a href="/index.html" class="menu-item" title="Главная">Главная</a>
         <div class="menu-item dropdown" id="catal">
@@ -138,6 +149,7 @@
           <input type="text" id="searchInput" placeholder="Поиск товара">
           <button onclick="searchProduct()" class="search-button"><i class="fa fa-search"></i></button>
         </div>
+      </nav>
     </div>
     </div>
   <div class="wrap">
@@ -322,6 +334,26 @@
 <script src="/js/search.js"></script>
 <script src="/js/main.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const burger = document.getElementById('burger-menu');
+  const mobileMenu = document.getElementById('mobileMenu');
 
+  if (!burger || !mobileMenu) return;
+
+  burger.addEventListener('click', function () {
+    mobileMenu.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (
+      !mobileMenu.contains(e.target) &&
+      !burger.contains(e.target)
+    ) {
+      mobileMenu.classList.remove('open');
+    }
+  });
+});
+</script>
 </body>
 </html>
