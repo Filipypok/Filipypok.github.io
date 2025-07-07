@@ -1932,27 +1932,34 @@ input:focus, textarea:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  background: none;
+  width: 44px;  /* Увеличим размер */
+  height: 44px;
+  background: rgba(12, 87, 145, 0.1); /* Легкий синий фон для лучшей видимости */
   border: none;
+  border-radius: 8px; /* Закруглим углы */
   cursor: pointer;
   position: fixed;
   top: 15px;
-  right: 15px;
+  right: 15px; /* Оставим справа, но уменьшим отступ */
   z-index: 1001;
   padding: 0;
+  transition: all 0.3s ease;
+}
+
+.burger:hover {
+  background: rgba(12, 87, 145, 0.2); /* Эффект при наведении */
 }
 
 .burger span {
   display: block;
-  width: 28px;
+  width: 24px; /* Немного уменьшим ширину линий */
   height: 3px;
   background-color: #0c5791;
   margin: 4px 0;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+
 
 /* Анимация бургера при открытии */
 .burger.active span:nth-child(1) {
@@ -2061,4 +2068,47 @@ input:focus, textarea:focus {
   .mobile-nav {
     padding-top: 80px; /* Чтобы меню не перекрывалось бургером */
   }
+}
+@media (max-width: 800px) {
+  .burger {
+    display: flex;
+    right: 10px; /* Сдвигаем левее от правого края */
+    top: 10px;
+    width: 48px;
+    height: 48px;
+    background: rgba(12, 87, 145, 0.2); /* Более заметный фон */
+  }
+  
+  .burger span {
+    width: 26px;
+    height: 3px;
+    background-color: #0c5791;
+  }
+  
+  /* Увеличиваем область клика для удобства */
+  .burger::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+/* Анимация бургера при открытии */
+.burger.active {
+  background: rgba(12, 87, 145, 0.3); /* Более темный фон при активном состоянии */
+}
+
+.burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
