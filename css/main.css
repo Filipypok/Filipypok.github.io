@@ -1969,7 +1969,7 @@ input:focus, textarea:focus {
 
 
 /* Показываем бургер только на мобилке */
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .burger {
     display: flex;
   }
@@ -2016,21 +2016,20 @@ input:focus, textarea:focus {
     display: none;
   }
   
-}
-@media (max-width: 800px) {
+} */
+/* @media (max-width: 800px) {
   .mobile-nav {
-    padding-top: 80px; /* Чтобы меню не перекрывалось бургером */
+    padding-top: 80px; 
   }
-}
-@media (max-width: 800px) {
+} */
+/* @media (max-width: 800px) {
   .burger {
     display: flex;
-    right: 10px; /* Сдвигаем левее от правого края */
+    right: 10px; 
     top: 10px;
     width: 48px;
     height: 48px;
-    background: rgba(12, 87, 145, 0.2); /* Более заметный фон */
-  }
+    background: rgba(12, 87, 145, 0.2); 
   
   .burger span {
     width: 26px;
@@ -2038,7 +2037,6 @@ input:focus, textarea:focus {
     background-color: #0c5791;
   }
   
-  /* Увеличиваем область клика для удобства */
   .burger::after {
     content: '';
     position: absolute;
@@ -2047,7 +2045,7 @@ input:focus, textarea:focus {
     right: -10px;
     bottom: -10px;
   }
-}
+} */
 
 /* Анимация бургера при открытии */
 .burger.active {
@@ -2066,19 +2064,19 @@ input:focus, textarea:focus {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-@media(max-width: 800px) {
+/* @media(max-width: 800px) {
   section .product {
     width: 50px;
     height: 50px;
   }
   main {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
-    gap: 12px; /* расстояние между карточками */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px; 
   }
   .product {
-    max-width: 100%; /* чтобы вписались в ячейку */
-    margin: 0;        /* убираем внешние отступы */
+    max-width: 100%; 
+    margin: 0;        
   }
   .product img {
     width: 100%;
@@ -2095,7 +2093,7 @@ input:focus, textarea:focus {
     line-height: 1.5;
   }
   aside {
-    display: none; /* Скрываем сайдбар на мобильных */
+    display: none; 
   }
   #about-description {
     display: none;
@@ -2103,8 +2101,8 @@ input:focus, textarea:focus {
   .about-image {
     display: none;
   }
-}
-@media(max-width: 800px) {
+} */
+/* @media(max-width: 800px) {
    .blockcont {
     display: flex;
     flex-direction: column;
@@ -2148,9 +2146,9 @@ input:focus, textarea:focus {
     line-height: 1.4;
     margin-top: 12px;
   }
-}
-@media(max-width: 800px) {
-  }
+} */
+/* @media(max-width: 800px) {
+  
   .padd {
     padding-left: 20px;
     padding-right: 20px;
@@ -2185,3 +2183,4 @@ input:focus, textarea:focus {
 .padd {
   padding: 16px;
 }
+} */
