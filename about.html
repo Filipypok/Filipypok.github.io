@@ -30,15 +30,26 @@
       </div>
     </div>
   </header>
-</div>
+  <button class="burger" id="burger-menu" aria-label="Открыть меню" aria-expanded="false">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</button>
 
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-nav">
+    <a href="/index.html">Главная</a>
+    <a href="/products.html">Каталог</a>
+    <a href="/about.html">О компании</a>
+    <a href="/writing.html">Запись</a>
+    <a href="/contacts.html">Контакты</a>
+  </nav>
+</div>
+</div>
     <div class="container">
     <div class="container-menu-bar">
-      <button class="burger" id="burger-menu" aria-label="Открыть меню">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <div class="mobile-menu-popup" id="mobileMenuPopup">
       <nav class="nav">
         <a href="/index.html" class="menu-item" title="Главная" >Главная</a>
         <div class="menu-item dropdown" id="catal">
@@ -141,6 +152,7 @@
           <input type="text" id="searchInput" placeholder="Поиск товара">
           <button onclick="searchProduct()" class="search-button"><i class="fa fa-search"></i></button>
         </div>
+      </nav>
     </div>
     </div>
   </header>
@@ -154,7 +166,7 @@
         <span id="malnavigat">О компании</span>
       </div>
     <div class="about-content-wrapper">
-      <div>
+      <div class="about-image">
         <h3><a href="/about.html" class="about">О компании</a></h3>
         <hr>
         <span><a href="/index.html">Назад</a></span>
@@ -212,12 +224,9 @@
         <p id="about-text-last">Моя компания устанавливает долгосрочное стабильное сотрудничество с несколькими сотнями производственных предприятий внутри страны, с полным научным процессом контроля качества, который может обеспечить качественную и дешевую продукцию клиентам.
           Мы приветсвуем друзей различных кругов к нашей компании проводить посещение, инструктирование и оперативные беседы.
         </p>
-
       </div>
       </div>
-      
   </div>
-  
 </div>
  <footer>
         <div class="blockcont">
@@ -246,5 +255,28 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burger-menu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  burger.addEventListener('click', function() {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });   
+});
+</script>
 </body>
 </html>
