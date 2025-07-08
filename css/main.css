@@ -2150,6 +2150,9 @@ input:focus, textarea:focus {
     line-height: 1.4;
     margin-top: 12px;
   }
+  form {
+    padding-left: 10px;
+  }
 } 
 /* Добавьте эти стили в конец вашего main.css */
 

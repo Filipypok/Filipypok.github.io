@@ -43,6 +43,10 @@
     <a href="/about.html">О компании</a>
     <a href="/writing.html">Запись</a>
     <a href="/contacts.html">Контакты</a>
+    <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Поиск товара">
+          <button onclick="searchProduct()" class="search-button"><i class="fa fa-search"></i></button>
+    </div>
   </nav>
 </div>
 </div>
@@ -231,10 +235,10 @@
             </div>
             </label>
             </div>        
-            <div id="area">
+            <!-- <div id="area">
                 <label for="">Сообщение</label>
                 <textarea name="message" placeholder="У меня есть вопрос..."></textarea>
-            </div>
+            </div> -->
         </div>
         <div class="buton">
             <button type="submit">Отправить</button>
@@ -243,9 +247,9 @@
       </div>
     </div>
   </div>
-  
 </div>
- <footer>
+    </div>
+<footer>
         <div class="blockcont">
           <div class="logo">
             <img src="/img/logo.png" alt="Логотип компании">
@@ -269,9 +273,9 @@
         <p>ООО «Оубадаму Ланфан» по импорту и экспорту. Авторское право строго
           запрещено копировать предложение использовать 1024x768 разрешение для просмотра файла</p>
       </footer>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/js/search.js"></script>
+  <script src="/js/main.js"></script>
   <script>
 document.addEventListener('DOMContentLoaded', function() {
   const burger = document.getElementById('burger-menu');
