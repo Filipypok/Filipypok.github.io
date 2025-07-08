@@ -2009,7 +2009,7 @@ input:focus, textarea:focus {
 }
 
 .mobile-nav a:hover {
-  color: #174d99;
+  color: #174d99
 }
 
   .container-menu-bar, .contacts, .header-info {
@@ -2148,40 +2148,92 @@ input:focus, textarea:focus {
     margin-top: 12px;
   }
 } 
- @media(max-width: 800px) {
-  
-  .padd {
-    padding-left: 20px;
-    padding-right: 20px;
+/* Добавьте эти стили в конец вашего main.css */
+
+@media (max-width: 800px) {
+  /* Общие исправления для мобильной версии */
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
   }
-  img.photo {
-  width: 100px;
-  height: 100px;
+  
+  /* Исправление для основного контента */
+  .flex-wrape {
+    flex-direction: column;
+  }
+  .container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
-.flex-wrape {
+  
+  /* Исправление для изображения */
+  .padd img.photo {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Исправление для таблицы */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+  }
+  
+  table {
+    width: 100%;
+    min-width: 600px; /* Минимальная ширина для прокрутки */
+    font-size: 14px;
+  }
+  
+  th, td {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+  
+  /* Исправление для текстового контента */
+  .about-text, .list {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+  
+  .underslider {
+    font-size: 18px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Исправление для навигации "предыдущая/следующая страница" */
+  .page {
+    flex-direction: column;
+    padding-left: 0;
+    gap: 10px;
+  }
+  
+  .back-page, .next-page {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  /* Исправление для футера */
+  footer {
+    padding: 20px 15px;
+  }
+  
+  footer .blockcont {
     flex-direction: column;
     gap: 20px;
   }
-
-  aside.sidebar {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
+  
+  footer p {
+    font-size: 14px;
+    line-height: 1.4;
   }
-
-  main {
-    width: 100%;
-  }
-  .table-responsive {
-  overflow-x: auto;
-  width: 100%;
 }
-
-.table-responsive table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.padd {
-  padding: 16px;
-}
-} 
