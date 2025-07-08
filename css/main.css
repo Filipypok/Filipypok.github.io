@@ -2209,7 +2209,7 @@ input:focus, textarea:focus {
   
   .underslider {
     font-size: 18px;
-    width: 100%;
+    width: 50%;
     margin-top: 20px;
   }
   #write-site {
