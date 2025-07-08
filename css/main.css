@@ -2072,9 +2072,11 @@ input:focus, textarea:focus {
     height: auto;
   }
   main {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 12px; 
+    gap: 12px;  */
+    max-width: 100%;
+    width: 100%;
   }
   .product {
     max-width: 100%; 
@@ -2154,21 +2156,16 @@ input:focus, textarea:focus {
 @media (max-width: 800px) {
   /* Общие исправления для мобильной версии */
   main {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px 0; */
   }
   
   /* Исправление для основного контента */
   .flex-wrape {
     flex-direction: column;
   }
-  .container {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
 .about-content-wrapper, #offset {
   padding-left: 0;
   margin-left: 0;
@@ -2177,14 +2174,6 @@ input:focus, textarea:focus {
 
   #proizv {
      max-width: 100%;
-  }
-  /* Исправление для изображения */
-  .padd img.photo {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
   }
   
   /* Исправление для таблицы */
@@ -2260,11 +2249,6 @@ input:focus, textarea:focus {
     font-size: 16px;
   }
   
-  .container {
-    padding: 0 15px;
-    width: 100%;
-    max-width: 100%;
-  }
   
   /* Шапка */
   .top-bar {
@@ -2365,8 +2349,7 @@ input:focus, textarea:focus {
   }
 
   .about-content-wrapper,
-  #offset,
-  .container {
+  #offset {
     width: 100%;
     max-width: 100%;
     margin: 0;
@@ -2377,5 +2360,48 @@ input:focus, textarea:focus {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+  }
+}
+@media (max-width: 800px) {
+  .padd {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: auto;
+  }
+  .padd img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  img.photo {
+    width: 100% !important;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+  .flex-wrape, .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+  }
+
+  table {
+    width: 100%;
+    min-width: 600px;
   }
 }
