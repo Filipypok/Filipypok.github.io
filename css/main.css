@@ -434,7 +434,7 @@ span a:hover {
 
 /* Слайдер товаров */
 .product-slider {
-    width: 935px; /* Фиксированная ширина как на скриншоте */
+    width: 100%; /* Фиксированная ширина как на скриншоте */
     flex-shrink: 0; /* Запрещаем уменьшение */
 
 }
@@ -2172,6 +2172,7 @@ input:focus, textarea:focus {
 .about-content-wrapper, #offset {
   padding-left: 0;
   margin-left: 0;
+  max-width: 100%;
 }
 
   #proizv {
@@ -2207,6 +2208,7 @@ input:focus, textarea:focus {
   
   /* Исправление для текстового контента */
   .about-text, .list {
+    width: 100%;
     font-size: 15px;
     line-height: 1.5;
     padding: 0 10px;
@@ -2248,5 +2250,132 @@ input:focus, textarea:focus {
   footer p {
     font-size: 14px;
     line-height: 1.4;
+  }
+  
+}
+/* Мобильная адаптация */
+@media (max-width: 800px) {
+  /* Общие стили */
+  body {
+    font-size: 16px;
+  }
+  
+  .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Шапка */
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Слайдер */
+  .slider {
+    width: 100%;
+    margin: 0;
+  }
+  .product-slider {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  #offset {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .slides {
+    width: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Текст о компании */
+  .about-section {
+    flex-direction: column;
+  }
+  
+  .about-content, .product-slider {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  /* Футер */
+  footer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 20px 15px;
+  }
+  
+  footer .blockcont {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  footer ul {
+    padding: 0;
+  }
+  
+  /* Таблицы */
+  .table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  table {
+    min-width: 600px;
+  }
+}
+/* Для слайдера на мобильных устройствах */
+@media (max-width: 800px) {
+  .product-slider {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .about-text,
+  .list,
+  #sfera,
+  #about-text-last {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    word-break: break-word;
+  }
+
+  .about-content-wrapper,
+  #offset,
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 }
