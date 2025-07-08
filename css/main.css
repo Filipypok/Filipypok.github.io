@@ -2066,9 +2066,10 @@ input:focus, textarea:focus {
 }
 
  @media(max-width: 800px) {
-  section .product {
-    width: 50px;
-    height: 50px;
+  section.product {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
   main {
     display: grid;
@@ -2168,7 +2169,14 @@ input:focus, textarea:focus {
   margin: 0;
   width: 100%;
 }
-  
+.about-content-wrapper, #offset {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+  #proizv {
+     max-width: 100%;
+  }
   /* Исправление для изображения */
   .padd img.photo {
     width: 100%;
@@ -2199,9 +2207,10 @@ input:focus, textarea:focus {
   
   /* Исправление для текстового контента */
   .about-text, .list {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
     padding: 0 10px;
+    max-width: 100%;
   }
   
   .underslider {
@@ -2209,7 +2218,10 @@ input:focus, textarea:focus {
     width: 100%;
     margin-top: 20px;
   }
-  
+  #write-site {
+    display: none;
+  }
+
   /* Исправление для навигации "предыдущая/следующая страница" */
   .page {
     flex-direction: column;
@@ -2225,6 +2237,7 @@ input:focus, textarea:focus {
   /* Исправление для футера */
   footer {
     padding: 20px 15px;
+    max-width: 100%;
   }
   
   footer .blockcont {
