@@ -2365,12 +2365,12 @@ input:focus, textarea:focus {
 @media (max-width: 800px) {
   .padd {
     width: 100%;
-    padding: 0;
+    padding-left: 10px;
     margin: 0;
     box-sizing: border-box;
     height: auto;
   }
-  .padd img {
+  .padd .photo {
     width: 100%;
     height: auto;
     display: block;
