@@ -2152,6 +2152,7 @@ input:focus, textarea:focus {
   }
   form {
     padding-left: 10px;
+    width: 100%;
   }
 } 
 /* Добавьте эти стили в конец вашего main.css */
