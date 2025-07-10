@@ -59,7 +59,14 @@ body {
   height: auto;
   cursor: pointer;
 }
-
+.laptam {
+  max-width: 3000px;
+}
+.foot {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+}
 .contacts {
   display: flex;
   flex-direction: column;
@@ -2137,6 +2144,7 @@ input:focus, textarea:focus {
     max-width: 160px;
     height: auto;
   }
+  
 
   .emailfooter, .phonefooter {
     display: block;
@@ -2408,4 +2416,13 @@ input:focus, textarea:focus {
     width: 100%;
     min-width: 600px;
   }
+}
+
+.qr-code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
 }

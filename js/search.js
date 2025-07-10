@@ -4,7 +4,6 @@ const productMap = {
     "сито": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "сушильная машина": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "сушка": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
-    "блок для сушильной машины": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "вакуумный дегазатор": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "вертикальный шламовый насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "вибросито с отрицательным давлением": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
@@ -20,8 +19,8 @@ const productMap = {
     "сушильная машина": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "центрифуга": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "центробежный шламовый насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
-    "немецкий тип оси": "/trailerAxle/bridgeTrailerPage.html.html",
-    "американский тип оси": "/trailerAxle/bridgeTrailerPage.html.html",
+    "немецкий тип оси": "/trailerAxle/bridgeTrailerPage.html",
+    "американский тип оси": "/trailerAxle/bridgeTrailerPage.html",
     "низкоплатформенный автомобильный мост": "/trailerAxle/bridgeTrailerPage.html",
     "ось дискового тормоза": "/trailerAxle/bridgeTrailerPage.html",
     "тайская ось": "/trailerAxle/bridgeTrailerPage.html",
@@ -58,7 +57,19 @@ const productMap = {
     "резиновый экструдер": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
     "резиновый каландр": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
     "резиновая плоская вулканизационная машина": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
-    "смеситель": "/rezinovye-izdeliya/rezinovye-izdeliya.html"
+    "смеситель": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
+    "штамповочное оборудование": "/shtampovka-na-zakaz/shtampovka-na-zakaz.html",
+    "шайба уплотнителя": "/shtampovka-na-zakaz/shtampovka-na-zakaz.html",
+    "колпак ступицы": "/shtampovka-na-zakaz/shtampovka-na-zakaz.html",
+    "брызговик и маслосъемный диск": "/shtampovka-na-zakaz/shtampovka-na-zakaz.html",
+    "фланец": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "крановое колесо": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "ось": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "токарный станок для обработки оси": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "цапфа": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "крупногабаритное ковочное оборудование": "/kovka-na-zakaz/kovka-na-zakaz.html",
+    "малогабаритное ковочное оборудование": "/kovka-na-zakaz/kovka-na-zakaz.html"
+    
   }; // <-- Закрываем объект productMap
   
     // Расстояние Левенштейна
@@ -111,8 +122,9 @@ const productMap = {
   }
 
   // Основная функция поиска
-  function searchProduct() {
-    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  function searchProduct(inputElement) {
+
+    const query = inputElement?.value.trim().toLowerCase();
     if (!query) return;
 
     // 1. Точное совпадение
@@ -166,5 +178,6 @@ const productMap = {
       if (!matched) {
         console.warn("Товар не найден на странице:", searchTerm);
       }
+       window.searchProduct = searchProduct;
     }
   });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ООО «Оубадаму Ланфан» - импорт и экспорт автозапчастей</title>
+  <title>ООО《Оптом Ланфан》по импорту и экспорту</title>
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,7 +19,7 @@
         <img src="/img/logo.png" alt="Логотип компании" class="logo" />
       </a>
       <div class="header-info">
-        <span id="OOO">ООО «Оубадаму Ланфан»</span>
+        <span id="OOO">ООО《Оптом Ланфан》по импорту и экспорту</span>
         <span class="header-slogan">Импорт и экспорт автозапчастей и оборудования из Китая</span>
       </div>
       <div class="contacts">
@@ -38,6 +38,7 @@
 <!-- Мобильное меню -->
 <div class="mobile-menu" id="mobileMenu">
   <nav class="mobile-nav">
+    <img src="img/qr.jpg" alt="Qr-код" class="qr-code">
     <a href="/index.html">Главная</a>
     <a href="/products.html">Каталог</a>
     <a href="/about.html">О компании</a>
@@ -45,7 +46,7 @@
     <a href="/contacts.html">Контакты</a>
     <div class="search-bar">
           <input type="text" id="searchInput" placeholder="Поиск товара">
-          <button onclick="searchProduct()" class="search-button"><i class="fa fa-search"></i></button>
+          <button onclick="searchProduct(this.previousElementSibling)" class="search-button"><i class="fa fa-search"></i></button>
     </div>
   </nav>
 </div>
@@ -123,7 +124,7 @@
               </ul>
             </li>
             <li class="has-submenu">
-              <a href="/Casting/CastingPage.html">Отливка изготовления на заказ</a>
+              <a href="/Casting/CastingPage.html">Отливка изделий на заказ</a>
               <ul class="dropdown-submenu">
                 <li><a href="/Casting/obrabotka-tormoznogo-barabana.html" title="Обработка тормозного барабана">Обработка тормозного барабана</a></li>
                 <li><a href="/Casting/obrabotka-stupitsy-kolesa.html" title="Обработка ступицы колеса">Обработка ступицы колеса</a></li>
@@ -138,6 +139,27 @@
               </ul>
             </li>
             <li class="has-submenu">
+                <a href="/shtampovka-na-zakaz/shtampovochnoye-oborudovaniye.html">Штамповка деталей на заказ</a>
+                <ul class="dropdown-submenu">
+                    <li><a href="/shtampovka-na-zakaz/shtampovochnoye-oborudovaniye-1.html" title="Штамповочное оборудование">Штамповочное оборудование</a></li>
+                    <li><a href="/shtampovka-na-zakaz/shayba-uplotnitel.html" title="Шайба уплотнитель">Шайба уплотнитель</a></li>
+                    <li><a href="/shtampovka-na-zakaz/kolpak-stupitsy.html" title="Колпак ступицы">Колпак ступицы</a></li>
+                    <li><a href="/shtampovka-na-zakaz/bryzgovik-i-maslouplotnitel'nyy-disk.html" title="Брызговик и маслоуплотнительный диск">Брызговик и маслоуплотнительный диск</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="/kovka-na-zakaz/kovka-na-zakaz.html">Ковка деталей на заказ</a>
+                <ul class="dropdown-submenu">
+                    <li><a href="/kovka-na-zakaz/flanets.html">Фланец</a></li>
+                    <li><a href="/kovka-na-zakaz/kranovoye-koleso.html">Крановое колесо</a></li>
+                    <li><a href="/kovka-na-zakaz/os'.html">Ось</a></li>
+                    <li><a href="/kovka-na-zakaz/tokarnyy-stanok-dlya-obrabotki-osi.html">Токараный станок для обработки оси</a></li>
+                    <li><a href="/kovka-na-zakaz/tsapfa.html">Цапфа</a></li>
+                    <li><a href="/kovka-na-zakaz/krupnogabaritnoye-kovochnoye-oborudovaniye.html">Крупногабаритное ковочное оборудование</a></li>
+                    <li><a href="/kovka-na-zakaz/malogabaritnoye-kovochnoye-oborudovaniye.html">Малогабаритное ковочное оборудование</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
               <a href="/rezinovye-izdeliya/rezinovye-izdeliya.html">Резиновые изделия на заказ</a>
               <ul class="dropdown-submenu">
                 <li><a href="/rezinovye-izdeliya/avtomaticheskaya-mashina-dlya-litya.html" title="Автоматическая машина для литья">Автоматическая машина для литья</a></li>
@@ -145,7 +167,9 @@
                 <li><a href="/rezinovye-izdeliya/rezinovyy-ekstruder.html" title="Резиновый экструдер">Резиновый экструдер</a></li>
                 <li><a href="/rezinovye-izdeliya/rezinovyy-kalandr.html" title="Резиновый каландр">Резиновый каландр</a></li>
                 <li><a href="/rezinovye-izdeliya/smesitel.html" title="Смеситель">Смеситель</a></li>
+              </ul>
             </li>
+
           </ul>
         </div>
         <a href="/about.html" class="menu-item" title="О компании">О компании</a>
@@ -153,7 +177,7 @@
         <a href="/contacts.html" class="menu-item" title="Контакты">Контакты</a>
         <div class="search-bar">
           <input type="text" id="searchInput" placeholder="Поиск товара">
-          <button onclick="searchProduct()" class="search-button"><i class="fa fa-search"></i></button>
+          <button onclick="searchProduct(this.previousElementSibling)" class="search-button"><i class="fa fa-search"></i></button>
         </div>
       </nav>
     </div>
@@ -269,22 +293,22 @@
           </section>
           <section class="product">
             <div class="image">
-              <a href="#">
-                <img src="/img/ПоковкаИзготовления.png" alt="Поковка изготовления на заказ" title="Поковка изготовления на заказ">
+              <a href="/kovka-na-zakaz/kovka-na-zakaz.html">
+                <img src="/img/ПоковкаИзготовления.png" alt="Ковка деталей на заказ" title="Ковка деталей на заказ">
               </a>
             </div>
             <div class="prod">
-              <a href="#">Поковка изготовления на заказ</a>
+              <a href="/kovka-na-zakaz/kovka-na-zakaz.html">Ковка деталей на заказ</a>
               </div>
           </section>
           <section class="product">
             <div class="image">
-              <a href="#">
+              <a href="shtampovka-na-zakaz/shtampovka-na-zakaz.html">
                 <img src="/img/Штамповкаизготовления.png" alt="Штамповка изготовления на заказ" title="Штамповка изготовления на заказ">
               </a>
             </div>
             <div class="prod">
-              <a href="#">Штамповка изготовления на заказ</a>
+              <a href="shtampovka-na-zakaz/shtampovka-na-zakaz.html">Штамповка изготовления на заказ</a>
             </div>
           </section>
           <section class="product">
@@ -305,9 +329,13 @@
  </div>
  <footer>
         <div class="blockcont">
+          <div class="foot">
           <div class="logo">
             <img src="/img/logo.png" alt="Логотип компании">
-            <p>2025 ООО Оубадаму Ланфан компания защищенная</p>
+          </div>
+          <div class="laptam">
+            <p >2025 ООО《Оптом Ланфан》по импорту и экспорту компания защищенная</p>
+            </div>
           </div>
           <div>
             <ul>
