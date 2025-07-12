@@ -247,14 +247,22 @@ body {
 
 
 .slide {
-  width: 100%; /* Каждый слайд занимает всю ширину контейнера */
-  flex-shrink: 0; /* Запрещаем уменьшение элементов внутри flex-контейнера */
+  width: 100%;
+  flex-shrink: 0;
   position: relative;
-} 
+  height: 500px; /* выбери комфортную высоту, можно 350–450px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Стили для изображений */
 .slide img {
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -672,6 +680,9 @@ footer > p {
 
 aside {
   max-width: 300px;
+}
+.sidebar-rezina {
+  padding-bottom: 80px;
 }
 aside .submenu {
   background: #fff;
