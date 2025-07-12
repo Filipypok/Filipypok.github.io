@@ -2398,10 +2398,14 @@ input:focus, textarea:focus {
     width: 100%;
     max-width: 200px;
     height: auto;
+    margin-right: 40px;
   }
   .qr-code {
     max-width: 50px;
     height: auto;
+  }
+  .qr-footer {
+    margin-left: 25px;
   }
   .footer-qr {
     max-width: 150px;
