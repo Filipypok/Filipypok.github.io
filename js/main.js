@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelector('.slides');
     const slideElements = document.querySelectorAll('.slide');

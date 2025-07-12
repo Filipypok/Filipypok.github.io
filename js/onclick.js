@@ -4,7 +4,7 @@ $(document).ready(function () {
         $('body').append(`
             <div id="overlay" style="
                 position:fixed;top:0;left:0;width:100%;height:100%;
-                background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;
+                background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;
                 z-index:9999;
             ">
                 <img src="${src}" style="max-width:90%;max-height:90%;">
