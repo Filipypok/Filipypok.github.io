@@ -598,7 +598,7 @@ footer a:hover {
 }
 .emailfooter {
   color: rgb(143, 143, 143);
-  margin-right: 20px;
+  margin-bottom: 10px;
 }
 .emailfooter::before {
    content: "\f003";
@@ -2158,8 +2158,6 @@ input:focus, textarea:focus {
   
 
   .emailfooter, .phonefooter {
-    display: block;
-    margin-bottom: 8px;
     font-weight: 500;
     color: #0c5791;
   }
@@ -2229,8 +2227,9 @@ input:focus, textarea:focus {
   
   .underslider {
     font-size: 18px;
-    width: 50%;
+    width: 70%;
     margin-top: 20px;
+    margin-bottom: 15px;
   }
   #write-site {
     display: none;
@@ -2270,6 +2269,11 @@ input:focus, textarea:focus {
   /* Общие стили */
   body {
     font-size: 16px;
+  }
+  .slide {
+    padding: 0;
+    margin: 0;
+    height: auto;
   }
   
   
@@ -2359,6 +2363,8 @@ input:focus, textarea:focus {
     width: 100%;
     height: auto;
     display: block;
+    padding: 0;
+    margin: 0;
   }
 
   .about-text,
@@ -2386,6 +2392,20 @@ input:focus, textarea:focus {
   }
 }
 @media (max-width: 800px) {
+  .qr {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+  .qr-code {
+    max-width: 50px;
+    height: auto;
+  }
+  .footer-qr {
+    max-width: 150px;
+    height: auto }
   .padd {
     width: 100%;
     padding-left: 10px;
@@ -2429,11 +2449,17 @@ input:focus, textarea:focus {
   }
 }
 
+
 .qr-code {
+  width: 110px;
+  height: 110px;
+}
+.qr {
+  padding-left: 50px;
+}
+.footer-qr {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  height: auto;
-  margin-top: 20px;
+  flex-direction: column;
 }
