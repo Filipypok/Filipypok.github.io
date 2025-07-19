@@ -27,7 +27,7 @@ const productMap = {
     "немецкий тип оси": "/trailerAxle/bridgeTrailerPage.html",
     "американский тип оси": "/trailerAxle/bridgeTrailerPage.html",
     "жесткая подвеска": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
-    "установленный светильник": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
+    "подвеска для легких грузов": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
     "единая точка подвески": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
     "американская подвеска": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
     "американский тип подвески": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
