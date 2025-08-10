@@ -526,6 +526,14 @@ span a:hover {
   font-weight: 300;
   text-indent: 5px;
 }
+.about-text-policy {
+  padding-top: 10px;
+  line-height: 1.2;
+  font-size: 19px;
+  letter-spacing: normal;
+  font-weight: 400;
+  text-indent: 5px;
+}
 
 #about-text-last {
   padding-top: 20px;
@@ -1250,7 +1258,7 @@ main .padd-most img {
 }
 .underslider-most {
   border-bottom: 1px solid #0c5791;
-  width: 260px;
+  width: 70%;
   padding-bottom: 5px;
   border-width: 2px;
   padding-top: 10px;
@@ -1367,6 +1375,9 @@ button {
     border: none; 
     padding: 0.6rem;
 }
+/* #policy {
+  padding-bottom: 10px;
+} */
 
 .mainform {
   justify-content: space-between;
@@ -2466,4 +2477,82 @@ input:focus, textarea:focus {
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
+}
+.last-policy {
+  padding-bottom: 60px;
+}
+.consent {
+  padding: 15px;
+  border-radius: 8px;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 18px 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #174d99;
+  text-decoration: underline;
+}
+form {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(44,114,157,0.07);
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.input-icon {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.input-icon input {
+  width: 100%;
+  padding: 10px 38px 10px 12px;
+  font-size: 16px;
+  border: 1.5px solid #0c5791;
+  border-radius: 8px;
+  background: #f7f9fb;
+  outline: none;
+  box-sizing: border-box;
+}
+.input-icon i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0c5791;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+
+.consent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+#cons {
+  color:#0c5791;
+  text-decoration: none;
 }

@@ -243,45 +243,48 @@
         <div class="mainform">
         <div id="write">
         <form 
-        action="https://formspree.io/f/xldnvdye"
-        method="POST" 
-        >
-            <label>Ваше имя:</label>
-            <div class="input-icon">
-                <input type="text" name="name" placeholder="Иван Иванов">
-                <i class="fa fa-user"></i>
-            </div>
-            <label>E-mail:</label>
-            <div class="input-icon">
-                <input type="text" name="email" placeholder="example@email.ru">
-                <i class="fa fa-envelope"></i>
-              </div>
-            <label>Телефон:</label>
-            <div class="input-icon">
-                <input type="text" name="phone" placeholder="+7 922-355-57-60">
-                <i class="fa fa-phone"></i>
-            </div>
-            <label>Интересующий товар:</label>
-            <div class="input-icon">
-                <input name="comment" placeholder="Вибросито с отрицательным давлением"></input>
-            </div>
-            </label>
-            </div>        
-            <!-- <div id="area">
-                <label for="">Сообщение</label>
-                <textarea name="message" placeholder="У меня есть вопрос..."></textarea>
-            </div> -->
-        </div>
-        <div class="buton">
-            <button type="submit">Отправить</button>
-          </div>
-        </form>
+  action="https://formspree.io/f/xldnvdye"
+  method="POST" 
+>
+    <label>Ваше имя:</label>
+    <div class="input-icon">
+        <input type="text" name="name" placeholder="Иван Иванов">
+        <i class="fa fa-user"></i>
+    </div>
+    <label>E-mail:</label>
+    <div class="input-icon">
+        <input type="text" name="email" placeholder="example@email.ru">
+        <i class="fa fa-envelope"></i>
+    </div>
+    <label>Телефон:</label>
+    <div class="input-icon">
+        <input type="text" name="phone" placeholder="+7 922-355-57-60">
+        <i class="fa fa-phone"></i>
+    </div>
+    <label>Интересующий товар:</label>
+    <div class="input-icon">
+        <input name="comment" placeholder="Вибросито с отрицательным давлением">
+    </div>
+    <!-- Согласие на обработку персональных данных -->
+    <div class="consent">
+      <label class="consent-label">
+        <input type="checkbox" name="consent" required>
+        Я даю согласие на
+        <a href="/consent.html" target="_blank" id="cons">обработку персональных данных</a>
+      </label>
+    </div>
+    <div class="buton">
+        <button type="submit">Отправить</button>
+    </div>
+</form>
       </div>
     </div>
+      </div>
+      </div>
   </div>
 </div>
     </div>
- <footer>
+   <footer>
         <div class="blockcont">
           <div class="foot">
           <div class="logo">
@@ -292,14 +295,18 @@
           </div>
             <p >2025 ООО《Оптом Ланфан》по импорту и экспорту</p>
           </div>
-          <div>
+          
+          <div class="footer-links">
             <ul>
               <li><a href="/index.html">Главная</a></li>
               <li><a href="/products.html">Каталог</a></li>
               <li><a href="/contacts.html">Контакты</a></li>
               <li><a href="/about.html">О компании</a></li>
+               <li><a href="/policy.html">Политика конфиденциальности</a></li>
+              <li><a href="/consent.html">Согласие на обработку персональных данных</a></li> 
             </ul>
           </div>
+          
           <div class="footer-qr">
             <a href="tel:+86-15075603580" class="phonefooter">86 15075603580</a><br>
             <a href="mailto:lfobdm@163.com" class="emailfooter">lfobdm@163.com</a>
