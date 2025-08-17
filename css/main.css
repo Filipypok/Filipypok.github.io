@@ -231,25 +231,13 @@ body {
 
 /* Позиницируем кнопку «Назад» слева */
 .prev {
-  left: -140px;
+  left: 10px;
 }
 
 .next {
   right: 10px;
 }
 
-/* .caption {
-            position: absolute;
-            bottom: 10px; 
-            left: 50%; /* 
-            transform: translateX(-50%); 
-            background: rgba(0, 0, 0, 0.6); 
-            color: white;
-            padding: 5px 10px; 
-            font-size: 14px; 
-            border-radius: 5px; 
-        } 
-*/
 input:checked + label {
   background: black;
 }
@@ -1074,16 +1062,6 @@ ul.menu {
       max-height: 1000px; /* просто большое значение */
     }
 
-    /* @media (max-width: 600px) { */
-    /* @media (max-width: 600px) {
-      .menu > li > a,
-      .submenu li a {
-        padding: 12px;
-        font-size: 16px;
-      }
-    }
-    } */
-
     .menu > li > a::after {
 
       font-size: 20px;
@@ -1094,19 +1072,6 @@ ul.menu {
     .menu > li:hover > a::after {
       transform: rotate(90deg); /* Повернуть стрелку при наведении */
     }
-
-
-/*Для стрелочки*/
-/* .menu-hov::after {
-  font-family: FontAwesome;
-  content: "\f105";
-  font-size: 20px;
-  margin-left: 30px;
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
-}
-     */
 
 .page {
   display: flex;
@@ -1272,118 +1237,15 @@ input:focus, textarea:focus {
   background-color: #fbfbfbcc;
 }
 
-form {
-  padding-top: 20px;
-    width: 30em;
-    max-width: 90%;
-
-}
-
-label {
-    margin-top:20px;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-input, textarea {
-    padding: 0.4rem;
-    width: 100%;
-}
-form div textarea {
-  width: 1000px;
-  height: 800px;
-}
-
 .mainform {
   justify-content: space-between;
   display: flex;
   flex:1;
 }
 
-
-
-
-form {
-  padding-top: 20px;
-    width: 30em;
-    max-width: 90%;
-
-}
-
-label {
-    margin-top:20px;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-form div textarea {
-  width: 1000px;
-  height: 800px;
-}
-
-
-
-
-form {
-  padding-top: 20px;
-    width: 30em;
-    max-width: 90%;
-
-}
-
-label {
-    margin-top:20px;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-input, textarea {
-    padding: 0.4rem;
-    width: 100%;
-}
-form div textarea {
-  width: 1000px;
-  height: 800px;
-}
-
-
-
-
-/*Стилистика мобильной адаптации*/
-
-
-/* --- Конец адаптации --- */
-
-
 label, input, textarea, button, select{
     font-size: 1.3rem;
     line-height: 1.2
-}
-
-form {
-  padding-top: 20px;
-    width: 30em;
-    max-width: 90%;
-
-}
-
-label {
-    margin-top:20px;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-input, textarea {
-    padding: 0.4rem;
-    width: 100%;
-}
-form div textarea {
-  width: 1000px;
-  height: 800px;
 }
 
 button {
@@ -1411,43 +1273,6 @@ button {
 form div {
     margin-top: 1rem;
 }
-
-
-
-form {
-  padding-top: 20px;
-    width: 30em;
-    max-width: 90%;
-
-}
-
-label {
-    margin-top:20px;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-
-input, textarea {
-    padding: 0.4rem;
-    width: 100%;
-}
-form div textarea {
-  width: 1000px;
-  height: 800px;
-}
-
-button {
-    margin-top: 2rem;
-    background: #0c5791;
-    color: #fff;
-    border: none; 
-    padding: 0.6rem;
-}
-
-
-
-
 
 /* Бургер */
 .burger {
@@ -2132,4 +1957,7 @@ html, body {
 }
 .about-text {
   max-width: 100%;
+}
+.footer-qr {
+  padding-right: 15px;
 }
