@@ -187,7 +187,6 @@
       </nav>
     </div>
     </div>
-<div class="container">
     <div id="proiz">
     <h1 id="proizv">Блок для сушильной машины</h1>
     </div>
@@ -202,7 +201,6 @@
         
         <span></span>
       </div>
-      <div class="container">
         <div class="flex-wrape">
           <aside class="sidebar">
             <nav>
@@ -280,7 +278,6 @@
     </main>
         </div>
       </div>
-</div>
     </div>
       <footer>
         <div class="blockcont">
@@ -319,6 +316,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/onclick.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchTerm = params.get("search");
+
+    if (searchTerm) {
+      const productSections = document.querySelectorAll(".product");
+      let matched = false;
+
+      productSections.forEach(section => {
+        const prod = section.querySelector(".prod");
+        const name = prod?.getAttribute("data-name")?.toLowerCase() || "";
+
+        if (name.includes(searchTerm.toLowerCase())) {
+          matched = true;
+
+          // Подсветка
+          section.style.backgroundColor = "yellow";
+          section.style.transition = "background-color 0.3s ease";
+
+          // Прокрутка до карточки
+          const yOffset = -100;
+          const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+
+      if (!matched) {
+        console.warn("Товар не найден на странице:", searchTerm);
+      }
+    }
+  });
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const burger = document.getElementById('burger-menu');
