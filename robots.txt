@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Host: lfobdm.ru
+Sitemap: https://lfobdm.ru/sitemap.xml
