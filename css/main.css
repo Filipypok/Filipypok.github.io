@@ -1077,7 +1077,7 @@ ul.menu {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  gap: 30px;
+  gap: 25x;
   margin: 40px auto 0 auto;
   max-width: 900px;
   padding-left: 100px;
@@ -1167,7 +1167,7 @@ main .padd-most img {
 }
 .underslider-most {
   border-bottom: 1px solid #0c5791;
-  width: 70%;
+  width: 55%;
   padding-bottom: 5px;
   border-width: 2px;
   padding-top: 10px;
