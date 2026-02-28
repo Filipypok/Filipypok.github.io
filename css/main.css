@@ -1123,8 +1123,13 @@ ul.menu {
   font-size: 22px;
   margin-left: 10px;
 }
+@media (min-width: 801px){
+  .next-page {
+    margin-left: 10px;
+  }
+}
 
-.back-page:hover a,
+.back-page:hover a, 
 .next-page:hover a {
   color: #fff;
 }
@@ -1156,7 +1161,11 @@ ul.menu {
 
 main .padd-most img {
   width: 200px;
-  height: 150px;
+  height: 200px;
+}
+
+.padd-most {
+  width: 30%;
 }
 .most {
   display: flex;
@@ -1405,7 +1414,7 @@ form div {
 }
 
 .mobile-nav a:hover {
-  color: #174d99
+  color: #174d99;
 }
 
   .container-menu-bar, .contacts, .header-info {
