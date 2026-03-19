@@ -450,7 +450,16 @@ span a:hover {
   font-weight: 500;
 
 }
-
+.video {
+  border-bottom: 1px solid #0c5791;
+  width: 400px;
+  padding-bottom: 5px;
+  border-width: 2px;
+  padding-top: 10px;
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
 .about-text {
   padding-top: 20px;
   line-height: 1.2;
