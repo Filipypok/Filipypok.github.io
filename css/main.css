@@ -1627,6 +1627,12 @@ form div {
     margin-top: 20px;
     margin-bottom: 15px;
   }
+  .video {
+    font-size: 18px;
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
   #write-site {
     display: none;
   }
