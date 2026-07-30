@@ -422,24 +422,6 @@ span a:hover {
     margin-top: 15px;
 }
 
-/* @media (max-width: 768px) { */
-/* @media (max-width: 768px) {
-    .about-section {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .about-content {
-        max-width: 100%;
-    }
-    
-    .product-slider {
-        width: 100%;
-        margin-top: 20px;
-    }
-}
-} */
-
 .underslider {
   border-bottom: 1px solid #0c5791;
   width: 300px;

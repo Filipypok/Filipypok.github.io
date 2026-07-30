@@ -7,7 +7,6 @@ const productMap = {
     "вакуумный дегазатор": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "вертикальный шламовый насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "вибросито с отрицательным давлением": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
-    "вибросито": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "винтовой насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "илоотделитель": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "комната контейнерного типа": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
@@ -16,7 +15,6 @@ const productMap = {
     "система обработки шлама": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "система обработки глинистой воды": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "срезающий насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
-    "сушильная машина": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "центрифуга": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "центробежный шламовый насос": "/neftyanoye-oborudovanie/neftyanoye-oborudovanie.html",
     "немецкий тип оси": "/trailerAxle/bridgeTrailerPage.html",
@@ -24,8 +22,6 @@ const productMap = {
     "низкоплатформенный автомобильный мост": "/trailerAxle/bridgeTrailerPage.html",
     "ось дискового тормоза": "/trailerAxle/bridgeTrailerPage.html",
     "тайская ось": "/trailerAxle/bridgeTrailerPage.html",
-    "немецкий тип оси": "/trailerAxle/bridgeTrailerPage.html",
-    "американский тип оси": "/trailerAxle/bridgeTrailerPage.html",
     "жесткая подвеска": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
     "подвеска для легких грузов": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
     "единая точка подвески": "/vozdushnaya-podveska/vozdushnaya-podveska.html",
@@ -52,7 +48,6 @@ const productMap = {
     "процесс потери пены": "/Casting/CastingPage.html",
     "литьё под давлением специальной формы": "/Casting/CastingPage.html",
     "литьё из песка с покрытием": "/Casting/CastingPage.html",
-    "литьё деталей специальной формы": "/Casting/CastingPage.html",
     "автоматическая машина для литья": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
     "резиновый экструдер": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
     "резиновый каландр": "/rezinovye-izdeliya/rezinovye-izdeliya.html",
@@ -178,6 +173,6 @@ const productMap = {
       if (!matched) {
         console.warn("Товар не найден на странице:", searchTerm);
       }
-       window.searchProduct = searchProduct;
     }
+    window.searchProduct = searchProduct;
   });
