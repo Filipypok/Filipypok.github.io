@@ -3,8 +3,8 @@ const path = require('path');
 
 const SITE_URL = 'https://lfobdm.ru';
 const OG_IMAGE = '/img/Slide1.webp';
-const GA_ID = 'G-XXXXXXXXXX';
-const GSC_TOKEN = 'ЗАМЕНИТЕ_НА_КОД_ВЕРИФИКАЦИИ';
+const GA_ID = ''; // пусто = не вставлять Google Analytics
+const GTM_ID = 'GTM-WN5W7DBW';
 
 const HEADER_MARKER = '<!--#header-->';
 const FOOTER_MARKER = '<!--#footer-->';
@@ -240,7 +240,7 @@ function applyHeadSeo(content, filePath, usedTitles) {
     head = head.replace('</head>', `  ${og}\n</head>`);
   }
 
-  if (!/googletagmanager/.test(head)) {
+  if (GA_ID && !/googletagmanager/.test(head)) {
     const ga = `<!-- Google Analytics 4: замени ${GA_ID} на свой ID в search.godaddy.com или console -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
   <script>
@@ -250,10 +250,6 @@ function applyHeadSeo(content, filePath, usedTitles) {
     gtag('config', '${GA_ID}');
   </script>`;
     head = head.replace('</head>', `  ${ga}\n</head>`);
-  }
-
-  if (!/google-site-verification/.test(head)) {
-    head = head.replace('</head>', `  <meta name="google-site-verification" content="${GSC_TOKEN}" />\n</head>`);
   }
 
   content = content.slice(0, headStart) + head + content.slice(headEnd + HEAD_CLOSE_LEN);
@@ -298,6 +294,27 @@ function applyContentFixes(content) {
   c = c.replace(/<h3 class="underslider"[^>]*>([^<]*)<\/h3>/g, '<h2 class="underslider">$1</h2>');
 
   return c;
+}
+
+function applyGTM(content) {
+  if (!GTM_ID || content.includes(GTM_ID)) return content;
+
+  const headSnippet = `<!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','${GTM_ID}');</script>
+  <!-- End Google Tag Manager -->`;
+  content = content.replace(/<head[^>]*>/, (m) => `${m}\n  ${headSnippet}`);
+
+  const noscript = `<!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->`;
+  content = content.replace(/<body[^>]*>/, (m) => `${m}\n  ${noscript}`);
+
+  return content;
 }
 
 function insertIndexH1(content, filePath) {
@@ -370,6 +387,8 @@ function processFile(filePath, stats) {
   body = applyHeadSeo(body, filePath, stats.usedTitles).content;
 
   body = insertIndexH1(body, filePath);
+
+  body = applyGTM(body);
 
   body = applyContentFixes(body);
 
