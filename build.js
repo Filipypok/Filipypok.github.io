@@ -96,11 +96,25 @@ function detectHeaderRegion(lines) {
   const bodyIdx = start === -1 ? lines.findIndex((l) => l.trim() === '<body>') : -1;
 
   let startIdx;
+  let viaHeadDiv;
   if (start !== -1) {
     startIdx = start;
+    viaHeadDiv = true;
   } else if (bodyIdx !== -1) {
     startIdx = bodyIdx + 1;
+    viaHeadDiv = false;
   } else {
+    return null;
+  }
+
+  if (viaHeadDiv) {
+    let depth = 0;
+    for (let i = startIdx; i < lines.length; i++) {
+      const opens = (lines[i].match(/<div\b/g) || []).length;
+      const closes = (lines[i].match(/<\/div>/g) || []).length;
+      depth += opens - closes;
+      if (i > startIdx && depth <= 0) return { startIdx, endIdx: i };
+    }
     return null;
   }
 
@@ -126,7 +140,7 @@ function detectHeaderRegion(lines) {
 }
 
 function detectFooterRegion(lines) {
-  const start = lines.findIndex((l) => l.trim() === '<footer>');
+  const start = lines.findIndex((l) => l.trim().startsWith('<footer'));
   if (start === -1) return null;
   const end = lines.findIndex((l, i) => i > start && l.includes('</footer>'));
   if (end === -1) return null;
@@ -317,6 +331,65 @@ function applyGTM(content) {
   return content;
 }
 
+function applySchema(content, filePath) {
+  if (!content.includes('#organization')) {
+    const org = [
+      '<script type="application/ld+json">',
+      '{',
+      '  "@context": "https://schema.org",',
+      '  "@type": "Organization",',
+      '  "@id": "https://lfobdm.ru/#organization",',
+      '  "name": "ООО «Оптом Ланфан» по импорту и экспорту",',
+      '  "alternateName": "Оптом Ланфан",',
+      '  "url": "https://lfobdm.ru/",',
+      '  "logo": "https://lfobdm.ru/img/logo.png",',
+      '  "description": "Импорт и экспорт автозапчастей и промышленного оборудования из Китая: мосты, воздушная подвеска, нефтяное оборудование, отливка, ковка, штамповка, резиновые изделия. Прямые поставки от производителя, контроль качества, доставка по России и СНГ.",',
+      '  "address": {',
+      '    "@type": "PostalAddress",',
+      '    "addressLocality": "Саньхэ",',
+      '    "addressRegion": "Хэбэй",',
+      '    "addressCountry": "CN"',
+      '  },',
+      '  "contactPoint": [',
+      '    { "@type": "ContactPoint", "telephone": "+79221808445", "contactType": "sales", "areaServed": "RU", "availableLanguage": "Russian" },',
+      '    { "@type": "ContactPoint", "telephone": "+8615075603580", "contactType": "sales", "areaServed": "CN", "availableLanguage": ["Russian", "Chinese"] }',
+      '  ],',
+      '  "email": "generalov.maks.84@yandex.ru"',
+      '}',
+      '</script>',
+    ].join('\n  ');
+    content = content.replace('</head>', `  ${org}\n</head>`);
+  }
+
+  if (content.includes('<div class="page">') && !content.includes('"@type": "Product"')) {
+    const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/);
+    const name = (h1Match
+      ? h1Match[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+      : (titleMatch ? titleMatch[1].replace(/\s*[-–—]\s*.*$/, '').trim() : ''));
+    const imgMatch = content.match(/<main[\s\S]*?<img[^>]*src="(\/img\/[^"]+)"/);
+    const descMatch = content.match(/name="description" content="([^"]*)"/);
+    const product = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: name,
+    };
+    if (descMatch) product.description = descMatch[1];
+    if (imgMatch) product.image = SITE_URL + imgMatch[1];
+    product.brand = { '@type': 'Brand', name: 'ООО «Оптом Ланфан»' };
+    const script = '<script type="application/ld+json">\n  ' + JSON.stringify(product, null, 2).split('\n').join('\n  ') + '\n  </script>';
+    content = content.replace('</head>', `  ${script}\n</head>`);
+  }
+
+  return content;
+}
+
+function ensureCharsetFirst(content) {
+  content = content.replace(/[ \t]*<meta[^>]*charset\s*=[^>]*>[^\r\n]*\r?\n?/gi, '');
+  content = content.replace(/<head[^>]*>/, (m) => `${m}\n  <meta charset="UTF-8">`);
+  return content;
+}
+
 function insertIndexH1(content, filePath) {
   if (path.basename(filePath) !== 'index.html') return content;
   if (content.includes(H1_MARKER)) return content;
@@ -386,9 +459,13 @@ function processFile(filePath, stats) {
 
   body = applyHeadSeo(body, filePath, stats.usedTitles).content;
 
+  body = applySchema(body, filePath);
+
   body = insertIndexH1(body, filePath);
 
   body = applyGTM(body);
+
+  body = ensureCharsetFirst(body);
 
   body = applyContentFixes(body);
 
