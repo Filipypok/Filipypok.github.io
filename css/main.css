@@ -1346,7 +1346,8 @@ tbody tr:hover td {
   flex: 0 0 220px;
 }
 
-.about-image h3 a {
+.about-image h3 a,
+#write-site h3 a {
   font-size: 18px;
   font-weight: 700;
   color: var(--blue-700);
@@ -1354,23 +1355,27 @@ tbody tr:hover td {
   transition: color 0.15s ease;
 }
 
-.about-image h3 a:hover {
+.about-image h3 a:hover,
+#write-site h3 a:hover {
   color: var(--blue-600);
 }
 
-.about-image hr {
+.about-image hr,
+#write-site hr {
   border: none;
   border-top: 1px solid var(--line);
   margin: 12px 0;
 }
 
-.about-image span a {
+.about-image span a,
+#write-site span a {
   color: var(--blue-600);
   text-decoration: none;
   font-size: 15px;
 }
 
-.about-image span a:hover {
+.about-image span a:hover,
+#write-site span a:hover {
   text-decoration: underline;
 }
 
@@ -2504,45 +2509,3 @@ body.has-order-bar .footer {
 
 
 /* FAQ */
-.faq {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-.faq h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.faq details {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  background: #fafafa;
-}
-.faq summary {
-  cursor: pointer;
-  padding: 14px 18px;
-  font-weight: 600;
-  font-size: 16px;
-  list-style: none;
-  position: relative;
-}
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-.faq summary::after {
-  content: "+";
-  position: absolute;
-  right: 18px;
-  font-size: 20px;
-  color: #b8222c;
-}
-.faq details[open] summary::after {
-  content: "\2212";
-}
-.faq details p {
-  padding: 0 18px 16px;
-  margin: 0;
-  line-height: 1.6;
-  font-size: 15px;
-}
