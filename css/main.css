@@ -2501,3 +2501,48 @@ body.has-order-bar .footer {
     grid-column: 1 / -1;
   }
 }
+
+
+/* FAQ */
+.faq {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+.faq h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.faq details {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #fafafa;
+}
+.faq summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 16px;
+  list-style: none;
+  position: relative;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  font-size: 20px;
+  color: #b8222c;
+}
+.faq details[open] summary::after {
+  content: "\2212";
+}
+.faq details p {
+  padding: 0 18px 16px;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 15px;
+}

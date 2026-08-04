@@ -475,7 +475,8 @@ function processFile(filePath, stats) {
 
   fs.writeFileSync(filePath, body, 'utf8');
   stats.processed++;
-  if (path.basename(filePath) !== '404.html') stats.pageUrls.push(pageUrl(filePath));
+  const base = path.basename(filePath);
+  if (base !== '404.html' && base !== 'policy.html' && base !== 'consent.html') stats.pageUrls.push(pageUrl(filePath));
 }
 
 function walk(dir, stats) {
