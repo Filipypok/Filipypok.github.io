@@ -2509,3 +2509,26 @@ body.has-order-bar .footer {
 
 
 /* FAQ */
+
+main > .hero-text {
+  grid-column: 1 / -1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px 20px 6px;
+  text-align: left;
+}
+
+.hero-text h1 {
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+
+.hero-text p {
+  color: var(--ink-2);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0;
+}
