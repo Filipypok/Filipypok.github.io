@@ -6,6 +6,18 @@ const OG_IMAGE = '/img/Slide1.webp';
 const GA_ID = ''; // пусто = не вставлять Google Analytics
 const GTM_ID = 'GTM-WN5W7DBW';
 
+// Карта разделов каталога: папка -> { заголовок, страница раздела }
+const CATEGORIES = {
+  'trailer-axle': { title: 'Мосты грузовых автомобилей', page: 'bridge-trailer-page.html' },
+  'vozdushnaya-podveska': { title: 'Воздушная подвеска', page: 'vozdushnaya-podveska.html' },
+  'zapchasti-dlya-mosta-gruzovyh-avtomobiley': { title: 'Запчасти для моста грузовых автомобилей', page: 'zapchasti-dlya-mosta-gruzovyh-avtomobiley.html' },
+  'neftyanoye-oborudovanie': { title: 'Нефтяное оборудование', page: 'neftyanoye-oborudovanie.html' },
+  'casting': { title: 'Отливка изделий на заказ', page: 'casting-page.html' },
+  'kovka-na-zakaz': { title: 'Ковка деталей на заказ', page: 'kovka-na-zakaz.html' },
+  'shtampovka-na-zakaz': { title: 'Штамповка деталей на заказ', page: 'shtampovka-na-zakaz.html' },
+  'rezinovye-izdeliya': { title: 'Резиновые изделия', page: 'rezinovye-izdeliya.html' },
+};
+
 const HEADER_MARKER = '<!--#header-->';
 const FOOTER_MARKER = '<!--#footer-->';
 const CATALOG_MARKER = '<!--#catalog-->';
@@ -96,11 +108,25 @@ function detectHeaderRegion(lines) {
   const bodyIdx = start === -1 ? lines.findIndex((l) => l.trim() === '<body>') : -1;
 
   let startIdx;
+  let viaHeadDiv;
   if (start !== -1) {
     startIdx = start;
+    viaHeadDiv = true;
   } else if (bodyIdx !== -1) {
     startIdx = bodyIdx + 1;
+    viaHeadDiv = false;
   } else {
+    return null;
+  }
+
+  if (viaHeadDiv) {
+    let depth = 0;
+    for (let i = startIdx; i < lines.length; i++) {
+      const opens = (lines[i].match(/<div\b/g) || []).length;
+      const closes = (lines[i].match(/<\/div>/g) || []).length;
+      depth += opens - closes;
+      if (i > startIdx && depth <= 0) return { startIdx, endIdx: i };
+    }
     return null;
   }
 
@@ -126,7 +152,7 @@ function detectHeaderRegion(lines) {
 }
 
 function detectFooterRegion(lines) {
-  const start = lines.findIndex((l) => l.trim() === '<footer>');
+  const start = lines.findIndex((l) => l.trim().startsWith('<footer'));
   if (start === -1) return null;
   const end = lines.findIndex((l, i) => i > start && l.includes('</footer>'));
   if (end === -1) return null;
@@ -317,23 +343,165 @@ function applyGTM(content) {
   return content;
 }
 
-function insertIndexH1(content, filePath) {
-  if (path.basename(filePath) !== 'index.html') return content;
-  if (content.includes(H1_MARKER)) return content;
-  const style = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;';
-  const h1 = `${H1_MARKER}\n  <h1 style="${style}">Автозапчасти и нефтяное оборудование из Китая — импорт и экспорт оптом и в розницу</h1>`;
-  return content.replace(/<body[^>]*>/, (m) => `${m}\n  ${h1}`);
+function applySchema(content, filePath) {
+  if (!content.includes('#organization')) {
+    const org = [
+      '<script type="application/ld+json">',
+      '{',
+      '  "@context": "https://schema.org",',
+      '  "@type": "Organization",',
+      '  "@id": "https://lfobdm.ru/#organization",',
+      '  "name": "ООО «Оптом Ланфан» по импорту и экспорту",',
+      '  "alternateName": "Оптом Ланфан",',
+      '  "url": "https://lfobdm.ru/",',
+      '  "logo": "https://lfobdm.ru/img/logo.png",',
+      '  "description": "Импорт и экспорт автозапчастей и промышленного оборудования из Китая: мосты, воздушная подвеска, нефтяное оборудование, отливка, ковка, штамповка, резиновые изделия. Прямые поставки от производителя, контроль качества, доставка по России и СНГ.",',
+      '  "address": {',
+      '    "@type": "PostalAddress",',
+      '    "addressLocality": "Саньхэ",',
+      '    "addressRegion": "Хэбэй",',
+      '    "addressCountry": "CN"',
+      '  },',
+      '  "contactPoint": [',
+      '    { "@type": "ContactPoint", "telephone": "+79221808445", "contactType": "sales", "areaServed": "RU", "availableLanguage": "Russian" },',
+      '    { "@type": "ContactPoint", "telephone": "+8615075603580", "contactType": "sales", "areaServed": "CN", "availableLanguage": ["Russian", "Chinese"] }',
+      '  ],',
+      '  "email": "generalov.maks.84@yandex.ru"',
+      '}',
+      '</script>',
+    ].join('\n  ');
+    content = content.replace('</head>', `  ${org}\n</head>`);
+  }
+
+  if (content.includes('<div class="page">') && !content.includes('"@type": "Product"')) {
+    const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/);
+    const name = (h1Match
+      ? h1Match[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+      : (titleMatch ? titleMatch[1].replace(/\s*[-–—]\s*.*$/, '').trim() : ''));
+    const imgMatch = content.match(/<main[\s\S]*?<img[^>]*src="(\/img\/[^"]+)"/);
+    const descMatch = content.match(/name="description" content="([^"]*)"/);
+    const product = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: name,
+    };
+    if (descMatch) product.description = descMatch[1];
+    if (imgMatch) product.image = SITE_URL + imgMatch[1];
+    product.brand = { '@type': 'Brand', name: 'ООО «Оптом Ланфан»' };
+    const script = '<script type="application/ld+json">\n  ' + JSON.stringify(product, null, 2).split('\n').join('\n  ') + '\n  </script>';
+    content = content.replace('</head>', `  ${script}\n</head>`);
+  }
+
+  return content;
 }
 
-function generateSitemap(pageUrls) {
-  const today = new Date().toISOString().slice(0, 10);
+function fixBreadcrumbLinks(content, filePath) {
+  const rel = path.relative(__dirname, filePath).split(path.sep).join('/');
+  const dirName = path.posix.dirname(rel);
+  const cat = CATEGORIES[dirName];
+  if (!cat) return content;
+  const expected = '/' + dirName + '/' + cat.page;
+  return content.replace(/<div class="navig">([\s\S]*?)<\/div>/, (block, inner) => {
+    const anchors = inner.match(/<a href="[^"]*" class="navigat">/g);
+    if (!anchors || anchors.length < 3) return block;
+    let n = 0;
+    const fixedInner = inner.replace(/(<a href=")[^"]*(" class="navigat">)/g, (mm, p1, p2) => {
+      n++;
+      if (n === 3) return p1 + expected + p2;
+      return mm;
+    });
+    return block.replace(inner, fixedInner);
+  });
+}
+
+function breadcrumbItems(content, filePath) {
+  const rel = path.relative(__dirname, filePath).split(path.sep).join('/');
+  const urlPath = rel === 'index.html' ? '/' : '/' + rel;
+  const dirName = path.posix.dirname(rel);
+  const base = path.posix.basename(rel);
+  const items = [{ name: 'Главная', url: '/' }];
+  if (dirName !== '.') {
+    items.push({ name: 'Каталог', url: '/products.html' });
+    const cat = CATEGORIES[dirName];
+    if (cat && base !== cat.page) items.push({ name: cat.title, url: '/' + dirName + '/' + cat.page });
+  }
+  let current = '';
+  const h1m = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  if (h1m) current = h1m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  else {
+    const tm = content.match(/<title>([\s\S]*?)<\/title>/);
+    if (tm) current = tm[1].replace(/\s*[-–—]\s*.*$/, '').replace(/\s*\|\s*.*$/, '').replace(/\s+/g, ' ').trim();
+  }
+  if (current) items.push({ name: current, url: urlPath });
+  return items;
+}
+
+function applyBreadcrumbSchema(content, filePath) {
+  const base = path.basename(filePath);
+  if (['index.html', '404.html', 'policy.html', 'consent.html'].includes(base)) return content;
+  if (content.includes('"@type": "BreadcrumbList"')) return content;
+  const items = breadcrumbItems(content, filePath);
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: SITE_URL + it.url,
+    })),
+  };
+  const script = '<script type="application/ld+json">\n  ' + JSON.stringify(schema, null, 2).split('\n').join('\n  ') + '\n  </script>';
+  return content.replace('</head>', `  ${script}\n</head>`);
+}
+
+function applyOgImage(content, filePath) {
+  const base = path.basename(filePath);
+  if (['index.html', '404.html', 'policy.html', 'consent.html'].includes(base)) return content;
+  const imgMatch = content.match(/<main[\s\S]*?<img[^>]*src="(\/img\/[^"]+)"/);
+  if (!imgMatch) return content;
+  const imgUrl = SITE_URL + imgMatch[1];
+  return content.replace(
+    /(<meta[^>]*property="og:image"[^>]*content=")[^"]*(")/i,
+    `$1${imgUrl}$2`
+  );
+}
+
+function ensureCharsetFirst(content) {
+  content = content.replace(/[ \t]*<meta[^>]*charset\s*=[^>]*>[^\r\n]*\r?\n?/gi, '');
+  content = content.replace(/<head[^>]*>/, (m) => `${m}\n  <meta charset="UTF-8">`);
+  return content;
+}
+
+function insertIndexH1(content, filePath) {
+  if (path.basename(filePath) !== 'index.html') return content;
+  content = content
+    .split(H1_MARKER)
+    .join('')
+    .replace(/\s*<h1\b[^>]*>Автозапчасти и нефтяное оборудование из Китая[\s\S]*?<\/h1>/g, '');
+  const hero = [
+    '<section class="hero-text">',
+    '  <h1>Автозапчасти и нефтяное оборудование из Китая — импорт и экспорт оптом и в розницу</h1>',
+    '  <p>ООО «Оптом Ланфан» — прямой импорт автозапчастей и промышленного оборудования из Китая. Поставляем мосты и оси для грузовых автомобилей, воздушную подвеску, запчасти к мостам, нефтяное и литейное оборудование; изготавливаем изделия литьём, ковкой и штамповкой по чертежам заказчика. Гарантия качества, доставка по России и СНГ.</p>',
+    '</section>',
+  ].join('\n  ');
+  if (!content.includes('class="hero-text"')) {
+    content = content.replace(/<main\b[^>]*>/, (m) => `${m}\n  ${hero}`);
+  }
+  return content;
+}
+
+function generateSitemap(pageUrls, lastmods) {
   const ordered = ['/', ...pageUrls.filter((u) => u !== '/').sort()];
   const lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
   for (const u of ordered) {
+    const m = lastmods[u];
+    const lastmod = m ? new Date(m).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
     const priority = u === '/' ? '1.0' : '0.7';
     lines.push('  <url>');
     lines.push(`    <loc>${SITE_URL}${u}</loc>`);
-    lines.push(`    <lastmod>${today}</lastmod>`);
+    lines.push(`    <lastmod>${lastmod}</lastmod>`);
     lines.push('    <changefreq>monthly</changefreq>');
     lines.push(`    <priority>${priority}</priority>`);
     lines.push('  </url>');
@@ -342,7 +510,7 @@ function generateSitemap(pageUrls) {
   fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), lines.join('\n') + '\n', 'utf8');
 }
 
-function processFile(filePath, stats) {
+function processFile(filePath, stats, stat) {
   let content;
   try {
     content = fs.readFileSync(filePath, 'utf8');
@@ -386,9 +554,19 @@ function processFile(filePath, stats) {
 
   body = applyHeadSeo(body, filePath, stats.usedTitles).content;
 
+  body = applySchema(body, filePath);
+
+  body = applyBreadcrumbSchema(body, filePath);
+
+  body = fixBreadcrumbLinks(body, filePath);
+
+  body = applyOgImage(body, filePath);
+
   body = insertIndexH1(body, filePath);
 
   body = applyGTM(body);
+
+  body = ensureCharsetFirst(body);
 
   body = applyContentFixes(body);
 
@@ -398,7 +576,12 @@ function processFile(filePath, stats) {
 
   fs.writeFileSync(filePath, body, 'utf8');
   stats.processed++;
-  if (path.basename(filePath) !== '404.html') stats.pageUrls.push(pageUrl(filePath));
+  const base = path.basename(filePath);
+  if (base !== '404.html' && base !== 'policy.html' && base !== 'consent.html') {
+    const url = pageUrl(filePath);
+    stats.pageUrls.push(url);
+    stats.lastmods[url] = stat ? stat.mtimeMs : Date.now();
+  }
 }
 
 function walk(dir, stats) {
@@ -420,14 +603,14 @@ function walk(dir, stats) {
       if (entry === 'partials' || entry === '.git' || entry === 'node_modules' || entry === '.backup') continue;
       walk(full, stats);
     } else if (entry.endsWith('.html')) {
-      processFile(full, stats);
+      processFile(full, stats, stat);
     }
   }
 }
 
-const stats = { processed: 0, warnings: [], usedTitles: new Map(), pageUrls: [] };
+const stats = { processed: 0, warnings: [], usedTitles: new Map(), pageUrls: [], lastmods: {} };
 walk(__dirname, stats);
-generateSitemap(stats.pageUrls);
+generateSitemap(stats.pageUrls, stats.lastmods);
 
 console.log(`Обработано страниц: ${stats.processed}`);
 console.log(`Сгенерирован sitemap.xml: ${stats.pageUrls.length} URL`);

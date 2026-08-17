@@ -1,4 +1,6 @@
 
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelector('.slides');
     const slideElements = document.querySelectorAll('.slide');
@@ -98,10 +100,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.head');
-  // Замените 200 на нужную вам высоту (например, высота шапки)
-  if (window.scrollY > 250) {
+  if (window.scrollY > 60) {
     header.classList.add('fixed-header');
   } else {
     header.classList.remove('fixed-header');
   }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const revealEls = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
 });
