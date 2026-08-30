@@ -3,11 +3,17 @@ $(document).ready(function () {
     var touchEndX = 0;
 
     $('img.photo').click(function () {
-        var $imgs = $('img.photo');
+        var $imgs = $('img.photo:not(.qr-code)');
         var total = $imgs.length;
         if (total === 0) return;
 
         var idx = $imgs.index(this);
+
+        if (idx === -1) {
+            $imgs = $(this);
+            total = 1;
+            idx = 0;
+        }
 
         function showImage(i) {
             var src = $imgs.eq(i).attr('src');
