@@ -2,28 +2,7 @@ $(document).ready(function () {
     var touchStartX = 0;
     var touchEndX = 0;
 
-    $('img.photo').click(function () {
-        var $imgs = $('img.photo:not(.qr-code)');
-        var total = $imgs.length;
-        if (total === 0) return;
-
-        var idx = $imgs.index(this);
-
-        if (idx === -1) {
-            $imgs = $(this);
-            total = 1;
-            idx = 0;
-        }
-
-        function showImage(i) {
-            var src = $imgs.eq(i).attr('src');
-            var alt = $imgs.eq(i).attr('alt') || '';
-            $('#gallery-overlay .gallery-img').attr('src', src).attr('alt', alt);
-            $('#gallery-overlay .gallery-counter').text((i + 1) + ' / ' + total);
-            $('#gallery-overlay .gallery-prev').toggle(total > 1);
-            $('#gallery-overlay .gallery-next').toggle(total > 1);
-        }
-
+    function openOverlay(src, alt, total, current) {
         if ($('#gallery-overlay').length === 0) {
             $('body').append(
                 '<div id="gallery-overlay" style="' +
@@ -51,7 +30,54 @@ $(document).ready(function () {
             document.body.style.overflow = 'hidden';
         }
 
-        showImage(idx);
+        $('#gallery-overlay .gallery-img').attr('src', src).attr('alt', alt);
+        $('#gallery-overlay .gallery-counter').text(current + ' / ' + total);
+        $('#gallery-overlay .gallery-prev').toggle(total > 1);
+        $('#gallery-overlay .gallery-next').toggle(total > 1);
+    }
+
+    function closeGallery() {
+        $('#gallery-overlay').fadeOut(200, function () { $(this).remove(); });
+        document.body.style.overflow = '';
+    }
+
+    // QR-код: одиночное открытие (без стрелок)
+    $(document).on('click', 'img.qr-code.photo', function (e) {
+        e.stopPropagation();
+        openOverlay($(this).attr('src'), $(this).attr('alt') || 'QR-код', 1, 1);
+
+        $(document).off('click.gallery').on('click.gallery', '#gallery-overlay', function (e) {
+            if ($(e.target).is('.gallery-img') || $(e.target).is('.gallery-close')) return;
+            closeGallery();
+        });
+        $(document).off('click.gclose').on('click.gclose', '.gallery-close', function (e) {
+            e.stopPropagation();
+            closeGallery();
+        });
+        $(document).off('keydown.gal').on('keydown.gal', function (e) {
+            if (!$('#gallery-overlay').length) return;
+            if (e.key === 'Escape') closeGallery();
+        });
+    });
+
+    // Галерея фото (исключая QR)
+    $('img.photo:not(.qr-code)').click(function () {
+        var $imgs = $('img.photo:not(.qr-code)');
+        var total = $imgs.length;
+        if (total === 0) return;
+
+        var idx = $imgs.index(this);
+
+        function showImage(i) {
+            var src = $imgs.eq(i).attr('src');
+            var alt = $imgs.eq(i).attr('alt') || '';
+            $('#gallery-overlay .gallery-img').attr('src', src).attr('alt', alt);
+            $('#gallery-overlay .gallery-counter').text((i + 1) + ' / ' + total);
+            $('#gallery-overlay .gallery-prev').toggle(total > 1);
+            $('#gallery-overlay .gallery-next').toggle(total > 1);
+        }
+
+        openOverlay($imgs.eq(idx).attr('src'), $imgs.eq(idx).attr('alt') || '', total, idx + 1);
 
         $(document).off('click.gallery').on('click.gallery', '#gallery-overlay', function (e) {
             if ($(e.target).is('.gallery-img') || $(e.target).is('.gallery-prev') || $(e.target).is('.gallery-next') || $(e.target).is('.gallery-close')) return;
@@ -67,15 +93,16 @@ $(document).ready(function () {
             e.stopPropagation();
             idx = (idx - 1 + total) % total;
             showImage(idx);
+            $('#gallery-overlay .gallery-counter').text((idx + 1) + ' / ' + total);
         });
 
         $(document).off('click.gnext').on('click.gnext', '.gallery-next', function (e) {
             e.stopPropagation();
             idx = (idx + 1) % total;
             showImage(idx);
+            $('#gallery-overlay .gallery-counter').text((idx + 1) + ' / ' + total);
         });
 
-        // Touch swipe
         $(document).off('touchstart.gal').on('touchstart.gal', '#gallery-overlay', function (e) {
             touchStartX = e.originalEvent.changedTouches[0].screenX;
         });
@@ -90,19 +117,15 @@ $(document).ready(function () {
                     idx = (idx - 1 + total) % total;
                 }
                 showImage(idx);
+                $('#gallery-overlay .gallery-counter').text((idx + 1) + ' / ' + total);
             }
         });
 
         $(document).off('keydown.gal').on('keydown.gal', function (e) {
             if (!$('#gallery-overlay').length) return;
-            if (e.key === 'ArrowLeft') { idx = (idx - 1 + total) % total; showImage(idx); }
-            else if (e.key === 'ArrowRight') { idx = (idx + 1) % total; showImage(idx); }
+            if (e.key === 'ArrowLeft') { idx = (idx - 1 + total) % total; showImage(idx); $('#gallery-overlay .gallery-counter').text((idx + 1) + ' / ' + total); }
+            else if (e.key === 'ArrowRight') { idx = (idx + 1) % total; showImage(idx); $('#gallery-overlay .gallery-counter').text((idx + 1) + ' / ' + total); }
             else if (e.key === 'Escape') { closeGallery(); }
         });
     });
-
-    function closeGallery() {
-        $('#gallery-overlay').fadeOut(200, function () { $(this).remove(); });
-        document.body.style.overflow = '';
-    }
 });
