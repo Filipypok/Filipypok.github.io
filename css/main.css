@@ -1995,7 +1995,7 @@ html.js .reveal-delay-3 {
   }
 
   main {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
     padding: 0;
     margin-bottom: 40px;
@@ -2069,7 +2069,7 @@ html.js .reveal-delay-3 {
   }
 
   .most {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 
@@ -2207,7 +2207,7 @@ html.js .reveal-delay-3 {
   }
 
   main {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
@@ -2233,7 +2233,7 @@ html.js .reveal-delay-3 {
   }
 
   .most {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
